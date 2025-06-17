@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "villagemasquerade:armorer"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "villagemasquerade:armorer"
+      }
+    ]
+  }
+}
