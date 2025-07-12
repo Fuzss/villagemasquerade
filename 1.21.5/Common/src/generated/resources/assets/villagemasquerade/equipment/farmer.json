@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "villagemasquerade/clothing": [
+      {
+        "texture": "villagemasquerade:farmer"
+      }
+    ],
+    "villagemasquerade/clothing_hat": [
+      {
+        "texture": "villagemasquerade:farmer"
+      }
+    ]
+  }
+}

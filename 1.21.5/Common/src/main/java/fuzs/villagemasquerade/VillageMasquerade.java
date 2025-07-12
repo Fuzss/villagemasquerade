@@ -6,7 +6,6 @@ import fuzs.puzzleslib.api.event.v1.AddBlockEntityTypeBlocksCallback;
 import fuzs.puzzleslib.api.event.v1.core.EventResult;
 import fuzs.puzzleslib.api.event.v1.entity.living.LivingDropsCallback;
 import fuzs.villagemasquerade.init.ModRegistry;
-import net.minecraft.client.resources.model.EquipmentClientInfo;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
@@ -23,7 +22,6 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.function.BiConsumer;
 
@@ -34,15 +32,8 @@ public class VillageMasquerade implements ModConstructor {
 
     @Override
     public void onConstructMod() {
-        for (Method method : EquipmentClientInfo.LayerType.class.getDeclaredMethods()) {
-            System.out.println(method);
-        }
         ModRegistry.bootstrap();
         registerEventHandlers();
-        EquipmentClientInfo.LayerType[] values = EquipmentClientInfo.LayerType.values();
-        System.out.println(values);
-        Class<EquipmentClientInfo.LayerType> layerTypeClass = EquipmentClientInfo.LayerType.class;
-        System.out.println(layerTypeClass);
     }
 
     private static void registerEventHandlers() {

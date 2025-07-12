@@ -27,13 +27,13 @@ public class VillagerWallSkullBlock extends WallSkullBlock {
             8.0,
             16.0));
 
+    public VillagerWallSkullBlock(SkullBlock.Type type, BlockBehaviour.Properties properties) {
+        super(type, properties);
+    }
+
     @Override
     public MapCodec<? extends WallSkullBlock> codec() {
         return CODEC;
-    }
-
-    public VillagerWallSkullBlock(SkullBlock.Type type, BlockBehaviour.Properties properties) {
-        super(type, properties);
     }
 
     @Override

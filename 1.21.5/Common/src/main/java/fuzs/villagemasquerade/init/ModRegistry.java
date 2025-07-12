@@ -2,7 +2,6 @@ package fuzs.villagemasquerade.init;
 
 import fuzs.puzzleslib.api.init.v3.registry.ContentRegistrationHelper;
 import fuzs.puzzleslib.api.init.v3.registry.RegistryManager;
-import fuzs.puzzleslib.api.init.v3.tags.TagFactory;
 import fuzs.villagemasquerade.VillageMasquerade;
 import fuzs.villagemasquerade.world.level.block.VillagerSkullBlock;
 import fuzs.villagemasquerade.world.level.block.VillagerWallSkullBlock;
@@ -13,7 +12,6 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.entity.npc.VillagerTrades;
@@ -80,11 +78,16 @@ public class ModRegistry {
             () -> villagerClothingProperties(EquipmentSlot.HEAD, VillagerProfession.ARMORER));
     public static final Holder.Reference<Item> ARMORER_APRON_ITEM = REGISTRIES.registerItem("armorer_apron",
             () -> villagerClothingProperties(EquipmentSlot.CHEST, VillagerProfession.ARMORER));
+    public static final Holder.Reference<Item> FARMER_HAT_ITEM = REGISTRIES.registerItem("farmer_hat",
+            () -> villagerClothingProperties(EquipmentSlot.HEAD, VillagerProfession.FARMER));
+    public static final Holder.Reference<Item> FARMER_BELT_ITEM = REGISTRIES.registerItem("farmer_belt",
+            () -> villagerClothingProperties(EquipmentSlot.CHEST, VillagerProfession.FARMER));
+    public static final Holder.Reference<Item> SHEPHERD_HAT_ITEM = REGISTRIES.registerItem("shepherd_hat",
+            () -> villagerClothingProperties(EquipmentSlot.HEAD, VillagerProfession.SHEPHERD));
+    public static final Holder.Reference<Item> SHEPHERD_VEST_ITEM = REGISTRIES.registerItem("shepherd_vest",
+            () -> villagerClothingProperties(EquipmentSlot.CHEST, VillagerProfession.SHEPHERD));
     public static final Holder.Reference<CreativeModeTab> CREATIVE_MODE_TAB = REGISTRIES.registerCreativeModeTab(
             ARMORER_GOGGLES_ITEM);
-
-    static final TagFactory TAGS = TagFactory.make(VillageMasquerade.MOD_ID);
-    public static final TagKey<Item> CLOTHING_ITEM_TAG = TAGS.registerItemTag("clothing");
 
     public static void bootstrap() {
         // NO-OP

@@ -1,10 +1,6 @@
 {
   "model": {
-    "type": "minecraft:special",
-    "base": "minecraft:item/template_skull",
-    "model": {
-      "type": "minecraft:head",
-      "kind": "villagemasquerade:villager"
-    }
+    "type": "minecraft:model",
+    "model": "villagemasquerade:item/villager_head"
   }
 }

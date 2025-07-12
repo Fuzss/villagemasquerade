@@ -18,5 +18,9 @@ public class ModLanguageProvider extends AbstractLanguageProvider {
         translationBuilder.addBlock(ModRegistry.IRON_GOLEM_HEAD_BLOCK, "Iron Golem Head");
         translationBuilder.addItem(ModRegistry.ARMORER_GOGGLES_ITEM, "Armorer Goggles");
         translationBuilder.addItem(ModRegistry.ARMORER_APRON_ITEM, "Armorer Apron");
+        translationBuilder.addItem(ModRegistry.FARMER_HAT_ITEM, "Farmer Hat");
+        translationBuilder.addItem(ModRegistry.FARMER_BELT_ITEM, "Farmer Belt");
+        translationBuilder.addItem(ModRegistry.SHEPHERD_HAT_ITEM, "Shepherd Hat");
+        translationBuilder.addItem(ModRegistry.SHEPHERD_VEST_ITEM, "Shepherd Vest");
     }
 }

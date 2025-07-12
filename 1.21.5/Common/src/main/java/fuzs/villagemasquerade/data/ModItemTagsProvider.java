@@ -19,7 +19,5 @@ public class ModItemTagsProvider extends AbstractTagProvider<Item> {
         this.tag(ItemTags.SKULLS).add(ModRegistry.VILLAGER_HEAD_ITEM, ModRegistry.IRON_GOLEM_HEAD_ITEM);
         this.tag(ItemTags.NOTE_BLOCK_TOP_INSTRUMENTS)
                 .add(ModRegistry.VILLAGER_HEAD_ITEM, ModRegistry.IRON_GOLEM_HEAD_ITEM);
-        this.tag(ModRegistry.CLOTHING_ITEM_TAG)
-                .add(ModRegistry.ARMORER_GOGGLES_ITEM.value(), ModRegistry.ARMORER_APRON_ITEM.value());
     }
 }

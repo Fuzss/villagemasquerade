@@ -19,17 +19,40 @@ public class ModEquipmentProvider extends AbstractEquipmentProvider {
     @Override
     public void addEquipment() {
         this.addVillagerProfession(VillagerProfession.ARMORER);
+        this.addVillagerProfession(VillagerProfession.BUTCHER);
+        this.addVillagerProfession(VillagerProfession.CARTOGRAPHER);
+        this.addVillagerProfession(VillagerProfession.CLERIC);
+        this.addAllClothingLayers(ModRegistry.createEquipmentAssetKey(VillagerProfession.FARMER));
+        this.addAllClothingLayers(ModRegistry.createEquipmentAssetKey(VillagerProfession.FISHERMAN));
+        this.addVillagerProfession(VillagerProfession.FLETCHER);
+        this.addVillagerProfession(VillagerProfession.LEATHERWORKER);
+        this.addVillagerProfession(VillagerProfession.LIBRARIAN);
+        this.addVillagerProfession(VillagerProfession.MASON);
+        this.addVillagerProfession(VillagerProfession.NITWIT);
+        this.addAllClothingLayers(ModRegistry.createEquipmentAssetKey(VillagerProfession.SHEPHERD));
+        this.addVillagerProfession(VillagerProfession.TOOLSMITH);
+        this.addVillagerProfession(VillagerProfession.WEAPONSMITH);
     }
 
     public final void addVillagerProfession(ResourceKey<VillagerProfession> resourceKey) {
-        this.addHumanoidLayers(ModRegistry.createEquipmentAssetKey(resourceKey));
+        this.addClothingLayer(ModRegistry.createEquipmentAssetKey(resourceKey));
     }
 
-    public final void addHumanoidLayers(ResourceKey<EquipmentAsset> resourceKey) {
+    public final void addClothingLayer(ResourceKey<EquipmentAsset> resourceKey) {
         ResourceLocation resourceLocation = resourceKey.location();
         this.unconditional(resourceLocation,
                 EquipmentClientInfo.builder()
                         .addLayers(ModModelLayers.CLOTHING_LAYER_TYPE, new EquipmentClientInfo.Layer(resourceLocation))
+                        .build());
+    }
+
+    public final void addAllClothingLayers(ResourceKey<EquipmentAsset> resourceKey) {
+        ResourceLocation resourceLocation = resourceKey.location();
+        this.unconditional(resourceLocation,
+                EquipmentClientInfo.builder()
+                        .addLayers(ModModelLayers.CLOTHING_LAYER_TYPE, new EquipmentClientInfo.Layer(resourceLocation))
+                        .addLayers(ModModelLayers.CLOTHING_HAT_LAYER_TYPE,
+                                new EquipmentClientInfo.Layer(resourceLocation))
                         .build());
     }
 }

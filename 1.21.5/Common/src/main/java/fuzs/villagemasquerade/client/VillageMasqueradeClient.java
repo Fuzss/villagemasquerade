@@ -5,13 +5,13 @@ import fuzs.puzzleslib.api.client.core.v1.context.LayerDefinitionsContext;
 import fuzs.puzzleslib.api.client.core.v1.context.LivingEntityRenderLayersContext;
 import fuzs.puzzleslib.api.client.core.v1.context.SkullRenderersContext;
 import fuzs.puzzleslib.api.client.core.v1.context.SpecialBlockModelRenderersContext;
+import fuzs.villagemasquerade.client.model.ClothingModel;
 import fuzs.villagemasquerade.client.model.SantaHatModel;
 import fuzs.villagemasquerade.client.model.VillagerHeadModel;
 import fuzs.villagemasquerade.client.model.geom.ModModelLayers;
 import fuzs.villagemasquerade.client.renderer.entity.layers.HumanoidClothingLayer;
 import fuzs.villagemasquerade.client.renderer.entity.layers.PlayerHatLayer;
 import fuzs.villagemasquerade.init.ModRegistry;
-import net.minecraft.client.model.HumanoidArmorModel;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.PlayerModel;
 import net.minecraft.client.model.SkullModel;
@@ -26,11 +26,16 @@ import net.minecraft.world.entity.EntityType;
 public class VillageMasqueradeClient implements ClientModConstructor {
 
     @Override
+    public void onConstructMod() {
+        ModModelLayers.bootstrap();
+    }
+
+    @Override
     public void onRegisterLayerDefinitions(LayerDefinitionsContext context) {
         context.registerLayerDefinition(ModModelLayers.PLAYER_SANTA_HAT, SantaHatModel::createBodyLayer);
-        context.registerLayerDefinition(ModModelLayers.PLAYER_CLOTHING, HumanoidClothingLayer::createBodyLayer);
+        context.registerLayerDefinition(ModModelLayers.PLAYER_CLOTHING, ClothingModel::createBodyLayer);
         context.registerLayerDefinition(ModModelLayers.PLAYER_BABY_CLOTHING,
-                () -> HumanoidClothingLayer.createBodyLayer().apply(HumanoidModel.BABY_TRANSFORMER));
+                () -> ClothingModel.createBodyLayer().apply(HumanoidModel.BABY_TRANSFORMER));
         context.registerLayerDefinition(ModModelLayers.VILLAGER_HEAD, () -> {
             return LayerDefinition.create(VillagerHeadModel.createVillagerHeadModel(), 64, 64);
         });
@@ -44,8 +49,8 @@ public class VillageMasqueradeClient implements ClientModConstructor {
         context.registerRenderLayer(EntityType.PLAYER,
                 (RenderLayerParent<PlayerRenderState, PlayerModel> renderer, EntityRendererProvider.Context contextX) -> {
                     return new HumanoidClothingLayer<>(renderer,
-                            new HumanoidArmorModel<>(contextX.bakeLayer(ModModelLayers.PLAYER_CLOTHING)),
-                            new HumanoidArmorModel<>(contextX.bakeLayer(ModModelLayers.PLAYER_BABY_CLOTHING)),
+                            new ClothingModel<>(contextX.bakeLayer(ModModelLayers.PLAYER_CLOTHING)),
+                            new ClothingModel<>(contextX.bakeLayer(ModModelLayers.PLAYER_BABY_CLOTHING)),
                             contextX.getEquipmentRenderer());
                 });
         context.registerRenderLayer(EntityType.PLAYER,

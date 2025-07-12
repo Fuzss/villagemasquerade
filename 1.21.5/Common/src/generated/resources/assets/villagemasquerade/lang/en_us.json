@@ -3,5 +3,9 @@
   "block.villagemasquerade.villager_head": "Villager Head",
   "item.villagemasquerade.armorer_apron": "Armorer Apron",
   "item.villagemasquerade.armorer_goggles": "Armorer Goggles",
+  "item.villagemasquerade.farmer_belt": "Farmer Belt",
+  "item.villagemasquerade.farmer_hat": "Farmer Hat",
+  "item.villagemasquerade.shepherd_hat": "Shepherd Hat",
+  "item.villagemasquerade.shepherd_vest": "Shepherd Vest",
   "itemGroup.villagemasquerade.main": "Village Masquerade"
 }

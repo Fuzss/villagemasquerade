@@ -15,6 +15,9 @@ abstract class EquipmentClientInfo$LayerTypeMixin {
     @Nullable
     @Unique
     private static EquipmentClientInfo.LayerType villagemasquerade$clothing;
+    @Nullable
+    @Unique
+    private static EquipmentClientInfo.LayerType villagemasquerade$clothingHat;
 
     @Invoker("<init>")
     private static EquipmentClientInfo.LayerType villagemasquerade$init(String name, int ordinal, String id) {
@@ -28,6 +31,8 @@ abstract class EquipmentClientInfo$LayerTypeMixin {
         // this can be chained for adding multiple values
         values = villagemasquerade$appendValue(values, villagemasquerade$clothing, "clothing");
         villagemasquerade$clothing = values[values.length - 1];
+        values = villagemasquerade$appendValue(values, villagemasquerade$clothingHat, "clothing_hat");
+        villagemasquerade$clothingHat = values[values.length - 1];
         return values;
     }
 
