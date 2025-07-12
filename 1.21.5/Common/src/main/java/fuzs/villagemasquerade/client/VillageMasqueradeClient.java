@@ -42,6 +42,9 @@ public class VillageMasqueradeClient implements ClientModConstructor {
         context.registerLayerDefinition(ModModelLayers.IRON_GOLEM_HEAD, () -> {
             return LayerDefinition.create(VillagerHeadModel.createVillagerHeadModel(), 128, 128);
         });
+        context.registerLayerDefinition(ModModelLayers.ILLAGER_HEAD, () -> {
+            return LayerDefinition.create(VillagerHeadModel.createVillagerHeadModel(), 64, 64);
+        });
     }
 
     @Override
@@ -71,6 +74,11 @@ public class VillageMasqueradeClient implements ClientModConstructor {
                 (EntityModelSet entityModelSet) -> {
                     return new SkullModel(entityModelSet.bakeLayer(ModModelLayers.IRON_GOLEM_HEAD));
                 });
+        context.registerSkullRenderer(ModRegistry.ILLAGER_SKULL_TYPE,
+                VillagerHeadModel.PILLAGER_LOCATION,
+                (EntityModelSet entityModelSet) -> {
+                    return new SkullModel(entityModelSet.bakeLayer(ModModelLayers.ILLAGER_HEAD));
+                });
     }
 
     @Override
@@ -83,5 +91,9 @@ public class VillageMasqueradeClient implements ClientModConstructor {
                 new SkullSpecialRenderer.Unbaked(ModRegistry.IRON_GOLEM_SKULL_TYPE));
         context.registerSpecialBlockModelRenderer(ModRegistry.IRON_GOLEM_WALL_HEAD_BLOCK.value(),
                 new SkullSpecialRenderer.Unbaked(ModRegistry.IRON_GOLEM_SKULL_TYPE));
+        context.registerSpecialBlockModelRenderer(ModRegistry.ILLAGER_HEAD_BLOCK.value(),
+                new SkullSpecialRenderer.Unbaked(ModRegistry.ILLAGER_SKULL_TYPE));
+        context.registerSpecialBlockModelRenderer(ModRegistry.ILLAGER_WALL_HEAD_BLOCK.value(),
+                new SkullSpecialRenderer.Unbaked(ModRegistry.ILLAGER_SKULL_TYPE));
     }
 }

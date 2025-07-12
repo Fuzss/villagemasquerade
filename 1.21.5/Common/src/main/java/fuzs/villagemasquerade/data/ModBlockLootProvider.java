@@ -34,5 +34,13 @@ public class ModBlockLootProvider extends AbstractLootProvider.Blocks {
                                 .setRolls(ConstantValue.exactly(1.0F))
                                 .add(LootItem.lootTableItem(block))
                                 .unwrap()));
+        this.add(ModRegistry.ILLAGER_HEAD_BLOCK.value(),
+                (Block block) -> LootTable.lootTable()
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1.0F))
+                                .add(LootItem.lootTableItem(block)
+                                        .apply(CopyComponentsFunction.copyComponents(CopyComponentsFunction.Source.BLOCK_ENTITY)
+                                                .include(DataComponents.NOTE_BLOCK_SOUND)))
+                                .unwrap()));
     }
 }

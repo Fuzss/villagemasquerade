@@ -22,9 +22,15 @@ public class ClothingModel<S extends HumanoidRenderState> extends HumanoidModel<
         partDefinition.getChild("head")
                 .addOrReplaceChild("hat_rim",
                         CubeListBuilder.create()
-                                .texOffs(32, 0)
-                                .addBox(-8.0F, -8.0F, -5.0F, 16.0F, 16.0F, 0.0F, CubeDeformation.NONE),
+                                .texOffs(1, 32)
+                                .addBox(-8.0F, -8.0F, -5.0F, 16.0F, 16.0F, 1.0F, cubeDeformation),
                         PartPose.rotation(-Mth.HALF_PI, 0.0F, 0.0F));
-        return LayerDefinition.create(meshDefinition, 64, 32);
+        return LayerDefinition.create(meshDefinition, 64, 64);
+    }
+
+    @Override
+    public void setAllVisible(boolean visible) {
+        super.setAllVisible(visible);
+        this.hatRim.visible = visible;
     }
 }

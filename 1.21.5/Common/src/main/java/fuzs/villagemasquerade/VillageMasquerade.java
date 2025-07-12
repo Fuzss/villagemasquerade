@@ -9,6 +9,7 @@ import fuzs.villagemasquerade.init.ModRegistry;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.IronGolem;
@@ -42,11 +43,15 @@ public class VillageMasquerade implements ModConstructor {
             consumer.accept(BlockEntityType.SKULL, ModRegistry.VILLAGER_WALL_HEAD_BLOCK.value());
             consumer.accept(BlockEntityType.SKULL, ModRegistry.IRON_GOLEM_HEAD_BLOCK.value());
             consumer.accept(BlockEntityType.SKULL, ModRegistry.IRON_GOLEM_WALL_HEAD_BLOCK.value());
+            consumer.accept(BlockEntityType.SKULL, ModRegistry.ILLAGER_HEAD_BLOCK.value());
+            consumer.accept(BlockEntityType.SKULL, ModRegistry.ILLAGER_WALL_HEAD_BLOCK.value());
         });
         LivingDropsCallback.EVENT.register((LivingEntity livingEntity, DamageSource damageSource, Collection<ItemEntity> itemDrops, boolean recentlyHit) -> {
             if (damageSource.getEntity() instanceof Creeper creeper && creeper.canDropMobsSkull()) {
                 Holder<Item> item;
-                if (livingEntity instanceof Villager) {
+                if (livingEntity.getType().is(EntityTypeTags.ILLAGER)) {
+                    item = ModRegistry.ILLAGER_HEAD_ITEM;
+                } else if (livingEntity instanceof Villager) {
                     item = ModRegistry.VILLAGER_HEAD_ITEM;
                 } else if (livingEntity instanceof IronGolem) {
                     item = ModRegistry.IRON_GOLEM_HEAD_ITEM;

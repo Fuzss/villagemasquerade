@@ -11,6 +11,8 @@ public class VillagerHeadModel {
             "textures/entity/villager/villager.png");
     public static final ResourceLocation IRON_GOLEM_LOCATION = ResourceLocation.withDefaultNamespace(
             "textures/entity/iron_golem/iron_golem.png");
+    public static final ResourceLocation PILLAGER_LOCATION = ResourceLocation.withDefaultNamespace(
+            "textures/entity/illager/pillager.png");
 
     public static MeshDefinition createVillagerHeadModel() {
         MeshDefinition meshDefinition = new MeshDefinition();

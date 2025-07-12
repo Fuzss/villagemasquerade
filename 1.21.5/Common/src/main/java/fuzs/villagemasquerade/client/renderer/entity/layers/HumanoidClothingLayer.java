@@ -29,7 +29,7 @@ public class HumanoidClothingLayer<S extends HumanoidRenderState, M extends Huma
         Equippable equippable = armorItem.get(DataComponents.EQUIPPABLE);
         if (equippable != null && shouldRender(equippable, slot)) {
             this.getParentModel().copyPropertiesTo(model);
-            this.setPartVisibility(model, slot, false);
+            this.setPartVisibility(model, slot);
             this.equipmentRenderer.renderLayers(ModModelLayers.CLOTHING_LAYER_TYPE,
                     equippable.assetId().orElseThrow(),
                     model,
@@ -37,26 +37,17 @@ public class HumanoidClothingLayer<S extends HumanoidRenderState, M extends Huma
                     poseStack,
                     bufferSource,
                     packedLight);
-            if (this.usesHatModel(slot)) {
-                this.setPartVisibility(model, slot, true);
-                this.equipmentRenderer.renderLayers(ModModelLayers.CLOTHING_HAT_LAYER_TYPE,
-                        equippable.assetId().orElseThrow(),
-                        model,
-                        armorItem,
-                        poseStack,
-                        bufferSource,
-                        packedLight);
-            }
         }
     }
 
-    private void setPartVisibility(A model, EquipmentSlot slot, boolean renderHatRim) {
+    @Override
+    protected void setPartVisibility(A model, EquipmentSlot slot) {
         model.setAllVisible(false);
         switch (slot) {
             case HEAD -> {
                 model.head.visible = true;
-                model.hat.visible = !renderHatRim;
-                model.hatRim.visible = renderHatRim;
+                model.hat.visible = true;
+                model.hatRim.visible = true;
             }
             case CHEST -> {
                 model.body.visible = true;
@@ -68,9 +59,5 @@ public class HumanoidClothingLayer<S extends HumanoidRenderState, M extends Huma
                 model.leftLeg.visible = true;
             }
         }
-    }
-
-    private boolean usesHatModel(EquipmentSlot slot) {
-        return slot == EquipmentSlot.HEAD;
     }
 }

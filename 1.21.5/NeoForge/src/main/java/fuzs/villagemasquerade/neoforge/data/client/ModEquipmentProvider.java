@@ -22,16 +22,27 @@ public class ModEquipmentProvider extends AbstractEquipmentProvider {
         this.addVillagerProfession(VillagerProfession.BUTCHER);
         this.addVillagerProfession(VillagerProfession.CARTOGRAPHER);
         this.addVillagerProfession(VillagerProfession.CLERIC);
-        this.addAllClothingLayers(ModRegistry.createEquipmentAssetKey(VillagerProfession.FARMER));
-        this.addAllClothingLayers(ModRegistry.createEquipmentAssetKey(VillagerProfession.FISHERMAN));
+        this.addVillagerProfession(VillagerProfession.FARMER);
+        this.addVillagerProfession(VillagerProfession.FISHERMAN);
         this.addVillagerProfession(VillagerProfession.FLETCHER);
         this.addVillagerProfession(VillagerProfession.LEATHERWORKER);
         this.addVillagerProfession(VillagerProfession.LIBRARIAN);
         this.addVillagerProfession(VillagerProfession.MASON);
         this.addVillagerProfession(VillagerProfession.NITWIT);
-        this.addAllClothingLayers(ModRegistry.createEquipmentAssetKey(VillagerProfession.SHEPHERD));
+        this.addVillagerProfession(VillagerProfession.SHEPHERD);
         this.addVillagerProfession(VillagerProfession.TOOLSMITH);
         this.addVillagerProfession(VillagerProfession.WEAPONSMITH);
+        this.addClothingLayer(ModRegistry.LEGACY_FARMER_EQUIPMENT_ASSET);
+        this.addClothingLayer(ModRegistry.LEGACY_LIBRARIAN_EQUIPMENT_ASSET);
+        this.addClothingLayer(ModRegistry.LEGACY_NITWIT_EQUIPMENT_ASSET);
+        this.addClothingLayer(ModRegistry.LEGACY_PRIEST_EQUIPMENT_ASSET);
+        this.addClothingLayer(ModRegistry.WANDERING_TRADER_EQUIPMENT_ASSET);
+        this.addClothingLayer(ModRegistry.IRON_GOLEM_EQUIPMENT_ASSET);
+        this.addClothingLayer(ModRegistry.EVOKER_EQUIPMENT_ASSET);
+        this.addClothingLayer(ModRegistry.PILLAGER_EQUIPMENT_ASSET);
+        this.addClothingLayer(ModRegistry.VINDICATOR_EQUIPMENT_ASSET);
+        this.addClothingLayer(ModRegistry.WITCH_EQUIPMENT_ASSET);
+        this.addClothingLayer(ModRegistry.SANTA_EQUIPMENT_ASSET);
     }
 
     public final void addVillagerProfession(ResourceKey<VillagerProfession> resourceKey) {
@@ -43,16 +54,6 @@ public class ModEquipmentProvider extends AbstractEquipmentProvider {
         this.unconditional(resourceLocation,
                 EquipmentClientInfo.builder()
                         .addLayers(ModModelLayers.CLOTHING_LAYER_TYPE, new EquipmentClientInfo.Layer(resourceLocation))
-                        .build());
-    }
-
-    public final void addAllClothingLayers(ResourceKey<EquipmentAsset> resourceKey) {
-        ResourceLocation resourceLocation = resourceKey.location();
-        this.unconditional(resourceLocation,
-                EquipmentClientInfo.builder()
-                        .addLayers(ModModelLayers.CLOTHING_LAYER_TYPE, new EquipmentClientInfo.Layer(resourceLocation))
-                        .addLayers(ModModelLayers.CLOTHING_HAT_LAYER_TYPE,
-                                new EquipmentClientInfo.Layer(resourceLocation))
                         .build());
     }
 }

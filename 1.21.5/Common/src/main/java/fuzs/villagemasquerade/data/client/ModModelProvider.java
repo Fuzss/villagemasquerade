@@ -28,6 +28,10 @@ public class ModModelProvider extends AbstractModelProvider {
                 ModRegistry.IRON_GOLEM_WALL_HEAD_BLOCK.value(),
                 ModRegistry.IRON_GOLEM_SKULL_TYPE,
                 blockModelGenerators);
+        this.createHead(ModRegistry.ILLAGER_HEAD_BLOCK.value(),
+                ModRegistry.ILLAGER_WALL_HEAD_BLOCK.value(),
+                ModRegistry.ILLAGER_SKULL_TYPE,
+                blockModelGenerators);
     }
 
     public final void createHead(Block headBlock, Block wallHeadBlock, SkullBlock.Type type, BlockModelGenerators blockModelGenerators) {
@@ -43,9 +47,56 @@ public class ModModelProvider extends AbstractModelProvider {
     public void addItemModels(ItemModelGenerators itemModelGenerators) {
         itemModelGenerators.generateFlatItem(ModRegistry.ARMORER_GOGGLES_ITEM.value(), ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModRegistry.ARMORER_APRON_ITEM.value(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModRegistry.BUTCHER_HEADBAND_ITEM.value(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModRegistry.BUTCHER_APRON_ITEM.value(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModRegistry.CARTOGRAPHER_MONOCLE_ITEM.value(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModRegistry.CARTOGRAPHER_HARNESS_ITEM.value(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModRegistry.CLERIC_COLLAR_ITEM.value(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModRegistry.CLERIC_ROBE_ITEM.value(), ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModRegistry.FARMER_HAT_ITEM.value(), ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModRegistry.FARMER_BELT_ITEM.value(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModRegistry.FISHERMAN_HAT_ITEM.value(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModRegistry.FISHERMAN_VEST_ITEM.value(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModRegistry.FISHERMAN_LEGGINGS_ITEM.value(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModRegistry.FLETCHER_HAT_ITEM.value(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModRegistry.FLETCHER_BELT_ITEM.value(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModRegistry.LEATHERWORKER_APRON_ITEM.value(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModRegistry.LIBRARIAN_HEADWEAR_ITEM.value(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModRegistry.LIBRARIAN_TOGA_ITEM.value(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModRegistry.MASON_APRON_ITEM.value(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModRegistry.NITWIT_ROBE_ITEM.value(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModRegistry.NITWIT_LEGGINGS_ITEM.value(), ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModRegistry.SHEPHERD_HAT_ITEM.value(), ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModRegistry.SHEPHERD_VEST_ITEM.value(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModRegistry.TOOLSMITH_APRON_ITEM.value(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModRegistry.WEAPONSMITH_EYEPATCH_ITEM.value(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModRegistry.WEAPONSMITH_APRON_ITEM.value(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModRegistry.LEGACY_FARMER_ROBE_ITEM.value(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModRegistry.LEGACY_FARMER_LEGGINGS_ITEM.value(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModRegistry.LEGACY_LIBRARIAN_ROBE_ITEM.value(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModRegistry.LEGACY_LIBRARIAN_LEGGINGS_ITEM.value(),
+                ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModRegistry.LEGACY_NITWIT_ROBE_ITEM.value(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModRegistry.LEGACY_NITWIT_LEGGINGS_ITEM.value(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModRegistry.LEGACY_PRIEST_ROBE_ITEM.value(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModRegistry.LEGACY_PRIEST_LEGGINGS_ITEM.value(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModRegistry.WANDERING_TRADER_HOOD_ITEM.value(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModRegistry.WANDERING_TRADER_ROBE_ITEM.value(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModRegistry.WANDERING_TRADER_LEGGINGS_ITEM.value(),
+                ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModRegistry.IRON_GOLEM_ROBE_ITEM.value(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModRegistry.IRON_GOLEM_LEGGINGS_ITEM.value(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModRegistry.EVOKER_ROBE_ITEM.value(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModRegistry.EVOKER_LEGGINGS_ITEM.value(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModRegistry.PILLAGER_JACKET_ITEM.value(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModRegistry.PILLAGER_LEGGINGS_ITEM.value(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModRegistry.VINDICATOR_JACKET_ITEM.value(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModRegistry.VINDICATOR_LEGGINGS_ITEM.value(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModRegistry.WITCH_HAT_ITEM.value(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModRegistry.WITCH_ROBE_ITEM.value(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModRegistry.WITCH_LEGGINGS_ITEM.value(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModRegistry.SANTA_HAT_ITEM.value(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModRegistry.SANTA_COAT_ITEM.value(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModRegistry.SANTA_LEGGINGS_ITEM.value(), ModelTemplates.FLAT_ITEM);
     }
 }
