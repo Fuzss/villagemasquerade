@@ -2,6 +2,7 @@ package fuzs.villagemasquerade.neoforge.data.client;
 
 import fuzs.puzzleslib.api.data.v2.core.DataProviderContext;
 import fuzs.puzzleslib.neoforge.api.client.data.v2.AbstractEquipmentProvider;
+import fuzs.villagemasquerade.client.model.geom.ModModelLayers;
 import fuzs.villagemasquerade.init.ModRegistry;
 import net.minecraft.client.resources.model.EquipmentClientInfo;
 import net.minecraft.resources.ResourceKey;
@@ -26,6 +27,9 @@ public class ModEquipmentProvider extends AbstractEquipmentProvider {
 
     public final void addHumanoidLayers(ResourceKey<EquipmentAsset> resourceKey) {
         ResourceLocation resourceLocation = resourceKey.location();
-        this.unconditional(resourceLocation, EquipmentClientInfo.builder().addHumanoidLayers(resourceLocation).build());
+        this.unconditional(resourceLocation,
+                EquipmentClientInfo.builder()
+                        .addLayers(ModModelLayers.CLOTHING_LAYER_TYPE, new EquipmentClientInfo.Layer(resourceLocation))
+                        .build());
     }
 }

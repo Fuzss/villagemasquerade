@@ -1,11 +1,6 @@
 {
   "layers": {
-    "humanoid": [
-      {
-        "texture": "villagemasquerade:armorer"
-      }
-    ],
-    "humanoid_leggings": [
+    "villagemasquerade/clothing": [
       {
         "texture": "villagemasquerade:armorer"
       }

@@ -14,6 +14,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -27,8 +28,20 @@ abstract class VillagerMixin extends AbstractVillager implements VillagerDataHol
 
     @Inject(method = "updateSpecialPrices", at = @At("TAIL"))
     private void updateSpecialPrices(Player player, CallbackInfo callback) {
-        int equippedArmorForProfession = 0;
+        int equippedArmorForProfession = this.villagemasquerade$getEquippedArmorForProfession(player);
+        if (equippedArmorForProfession > 0) {
+            // same as hero of the village effect, but does stack with it
+            for (MerchantOffer merchantOffer : this.getOffers()) {
+                double priceMultiplier = 0.3 + 0.0625 * equippedArmorForProfession;
+                int newPriceInItems = (int) Math.floor(priceMultiplier * merchantOffer.getBaseCostA().getCount());
+                merchantOffer.addToSpecialPriceDiff(-Math.max(newPriceInItems, 1));
+            }
+        }
+    }
 
+    @Unique
+    private int villagemasquerade$getEquippedArmorForProfession(Player player) {
+        int equippedArmorForProfession = 0;
         for (EquipmentSlot equipmentSlot : EquipmentSlotGroup.ARMOR) {
             if (equipmentSlot.getType() == EquipmentSlot.Type.HUMANOID_ARMOR) {
                 ItemStack itemStack = player.getItemBySlot(equipmentSlot);
@@ -38,14 +51,6 @@ abstract class VillagerMixin extends AbstractVillager implements VillagerDataHol
                 }
             }
         }
-
-        if (equippedArmorForProfession > 0) {
-            // same as hero of the village effect, but does stack with it
-            for (MerchantOffer merchantOffer : this.getOffers()) {
-                double priceMultiplier = 0.3 + 0.0625 * equippedArmorForProfession;
-                int newPriceInItems = (int) Math.floor(priceMultiplier * merchantOffer.getBaseCostA().getCount());
-                merchantOffer.addToSpecialPriceDiff(-Math.max(newPriceInItems, 1));
-            }
-        }
+        return equippedArmorForProfession;
     }
 }

@@ -7,7 +7,7 @@
     "VillagerMixin"
   ],
   "client": [
-    "client.HumanoidArmorLayerMixin"
+    "client.EquipmentClientInfo\u0024LayerTypeMixin"
   ],
   "injectors": {
     "defaultRequire": 1

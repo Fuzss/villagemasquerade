@@ -2,7 +2,6 @@ package fuzs.villagemasquerade.client.renderer.entity.layers;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import fuzs.villagemasquerade.VillageMasquerade;
-import fuzs.villagemasquerade.client.model.PlayerClothingModel;
 import fuzs.villagemasquerade.client.model.PlayerHatModel;
 import fuzs.villagemasquerade.client.model.geom.ModModelLayers;
 import net.minecraft.client.model.HeadedModel;
@@ -18,19 +17,16 @@ public class PlayerHatLayer<S extends HumanoidRenderState, M extends HumanoidMod
     public static final ResourceLocation TEXTURE_LOCATION = VillageMasquerade.id("textures/santa_hat.png");
 
     private final PlayerHatModel model;
-    private final PlayerClothingModel<S> clothingModel;
 
     public PlayerHatLayer(RenderLayerParent<S, M> renderer, EntityRendererProvider.Context context) {
         super(renderer);
         this.model = new PlayerHatModel(context.bakeLayer(ModModelLayers.PLAYER_SANTA_HAT));
-        this.clothingModel = new PlayerClothingModel<>(context.bakeLayer(ModModelLayers.PLAYER_CLOTHING));
     }
 
     @Override
     public void render(PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, S renderState, float yRot, float xRot) {
         if (!renderState.headItem.isEmpty()) {
             this.model.getHead().copyFrom(this.getParentModel().getHead());
-            this.getParentModel().copyPropertiesTo(this.clothingModel);
             renderColoredCutoutModel(this.model,
                     TEXTURE_LOCATION,
                     poseStack,
