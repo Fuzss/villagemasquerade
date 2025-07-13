@@ -1,4 +1,4 @@
-// 1.21.5	2025-07-12T23:52:07.993657	Equipment
+// 1.21.5	2025-07-13T13:11:08.042312	Equipment
 0acc6f520a361b7696c3f40fde29ab1ec2a79a91 assets/villagemasquerade/equipment/armorer.json
 1bde40ee3bd7a3964640ac3bf87c20eee59286c9 assets/villagemasquerade/equipment/butcher.json
 d5c92b974f5a45ff3d5459f4aa0c4e9e4ca9aa7f assets/villagemasquerade/equipment/cartographer.json
@@ -17,7 +17,7 @@ f7c1fbe069dc8680f84c1d0674760aaa84551cf6 assets/villagemasquerade/equipment/lega
 656fa04f7b00363e37b6d6d08e94e5d2bf7b239b assets/villagemasquerade/equipment/mason.json
 abc4fe6487d0cd1e789eacfc4525d9af8e97933b assets/villagemasquerade/equipment/nitwit.json
 bb5e1b28a00fc4b4fe3b30587d145af565790b25 assets/villagemasquerade/equipment/pillager.json
-31fcfec52a1d560ac97b607ac8aaa09eafae5e4c assets/villagemasquerade/equipment/santa_equipment.json
+5c98addf3596788e9ac31b828350ddb33cc2ce60 assets/villagemasquerade/equipment/santa.json
 25192da135fc64dd290978b3fe64ee76fc9fb02e assets/villagemasquerade/equipment/shepherd.json
 107be3807d8d5df3f1ed065cc13ce680612e14a7 assets/villagemasquerade/equipment/toolsmith.json
 3420a2ceac469f5b5eaac4c8393215fd17ff5862 assets/villagemasquerade/equipment/vindicator.json

@@ -5,8 +5,13 @@ import fuzs.puzzleslib.api.core.v1.utility.ResourceLocationHelper;
 import fuzs.puzzleslib.api.event.v1.AddBlockEntityTypeBlocksCallback;
 import fuzs.puzzleslib.api.event.v1.core.EventResult;
 import fuzs.puzzleslib.api.event.v1.entity.living.LivingDropsCallback;
+import fuzs.puzzleslib.api.event.v1.server.LootTableLoadCallback;
+import fuzs.villagemasquerade.init.ModLootTables;
 import fuzs.villagemasquerade.init.ModRegistry;
+import fuzs.villagemasquerade.util.VillagerTradingHelper;
 import net.minecraft.core.Holder;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.EntityTypeTags;
@@ -16,6 +21,8 @@ import net.minecraft.world.entity.animal.IronGolem;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.Creeper;
 import net.minecraft.world.entity.npc.Villager;
+import net.minecraft.world.entity.npc.VillagerProfession;
+import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
@@ -24,6 +31,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.function.BiConsumer;
 
 public class VillageMasquerade implements ModConstructor {
@@ -65,6 +73,29 @@ public class VillageMasquerade implements ModConstructor {
             }
             return EventResult.PASS;
         });
+        LootTableLoadCallback.EVENT.register(ModLootTables::onLootTableLoad);
+    }
+
+    public void onRegisterVillagerTrades(VillagerTradesContext context) {
+        BuiltInRegistries.ITEM.listElements()
+                .filter((Holder.Reference<Item> holder) -> holder.key().location().getNamespace().equals(MOD_ID))
+                .map(Holder.Reference::value)
+                .forEach((Item item) -> {
+                    ResourceKey<VillagerProfession> resourceKey = item.components()
+                            .getOrDefault(ModRegistry.VILLAGER_PROFESSION_DATA_COMPONENT_TYPE.value(),
+                                    VillagerProfession.NONE);
+                    if (resourceKey != VillagerProfession.NONE) {
+                        context.registerVillagerTrades(resourceKey,
+                                VillagerTradesContext.VillagerLevel.MASTER,
+                                (List<VillagerTrades.ItemListing> itemListings) -> {
+                                    itemListings.add(VillagerTradingHelper.createVillagerItemListing(item));
+                                });
+                    }
+                });
+        context.registerWanderingTrades(VillagerTradesContext.WanderingTradesPool.SPECIAL_SALES,
+                VillagerTradingHelper.createWanderingItemListing(ModRegistry.WANDERING_TRADER_HOOD_ITEM),
+                VillagerTradingHelper.createWanderingItemListing(ModRegistry.WANDERING_TRADER_ROBE_ITEM),
+                VillagerTradingHelper.createWanderingItemListing(ModRegistry.WANDERING_TRADER_LEGGINGS_ITEM));
     }
 
     public static ResourceLocation id(String path) {

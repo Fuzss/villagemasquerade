@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "villagemasquerade:santa_hat"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "villagemasquerade:santa_coat"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "villagemasquerade:santa_leggings"
+        },
+        {
+          "type": "minecraft:empty",
+          "weight": 3
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "villagemasquerade:inject/chests/igloo_chest"
+}

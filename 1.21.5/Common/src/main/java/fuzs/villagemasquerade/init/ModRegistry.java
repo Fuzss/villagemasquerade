@@ -21,8 +21,10 @@ import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.npc.VillagerProfession;
-import net.minecraft.world.entity.npc.VillagerTrades;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.StandingAndWallBlockItem;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.item.equipment.EquipmentAsset;
@@ -296,33 +298,5 @@ public class ModRegistry {
         ResourceLocation resourceLocation = ResourceLocation.withDefaultNamespace("clothing." + armorType.getName());
         builder.add(holder, new AttributeModifier(resourceLocation, amount, operation), equipmentSlotGroup);
         return builder.build();
-    }
-
-    public static VillagerTrades.ItemListing createItemListing(Holder<Item> item) {
-        EquipmentSlot equipmentSlot;
-        if (item.value().components().has(DataComponents.EQUIPPABLE)) {
-            equipmentSlot = item.value().components().get(DataComponents.EQUIPPABLE).slot();
-        } else {
-            equipmentSlot = null;
-        }
-        if (equipmentSlot != null && equipmentSlot.getType() == EquipmentSlot.Type.HUMANOID_ARMOR) {
-            return new VillagerTrades.ItemsForEmeralds(new ItemStack(item),
-                    getPriceForPiece(equipmentSlot),
-                    1,
-                    1,
-                    30,
-                    0.2F);
-        } else {
-            throw new IllegalArgumentException("No armor: " + item);
-        }
-    }
-
-    static int getPriceForPiece(EquipmentSlot equipmentSlot) {
-        return switch (equipmentSlot) {
-            case FEET, HEAD -> 8;
-            case CHEST -> 16;
-            case LEGS -> 12;
-            default -> throw new IllegalArgumentException();
-        };
     }
 }
