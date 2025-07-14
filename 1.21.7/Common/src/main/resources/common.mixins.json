@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "compatibilityLevel": "JAVA_17",
+  "package": "${modGroup}.mixin",
+  "mixins": [
+    "VillagerMixin"
+  ],
+  "client": [
+    "client.EquipmentClientInfo\u0024LayerTypeMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
