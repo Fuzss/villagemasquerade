@@ -1,6 +1,7 @@
 package fuzs.villagemasquerade;
 
 import fuzs.puzzleslib.api.core.v1.ModConstructor;
+import fuzs.puzzleslib.api.core.v1.context.VillagerTradesContext;
 import fuzs.puzzleslib.api.core.v1.utility.ResourceLocationHelper;
 import fuzs.puzzleslib.api.event.v1.AddBlockEntityTypeBlocksCallback;
 import fuzs.puzzleslib.api.event.v1.entity.ServerEntityLevelEvents;
@@ -46,9 +47,7 @@ public class VillageMasquerade implements ModConstructor {
         LivingVisibilityCallback.EVENT.register(ClothingEquipmentHandler::onLivingVisibility);
     }
 
-    /**
-     * TODO hook this up proper for 1.21.7
-     */
+    @Override
     public void onRegisterVillagerTrades(VillagerTradesContext context) {
         BuiltInRegistries.ITEM.listElements()
                 .filter((Holder.Reference<Item> holder) -> holder.key().location().getNamespace().equals(MOD_ID))

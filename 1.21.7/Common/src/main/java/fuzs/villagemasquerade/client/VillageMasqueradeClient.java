@@ -5,7 +5,7 @@ import fuzs.puzzleslib.api.client.core.v1.context.LayerDefinitionsContext;
 import fuzs.puzzleslib.api.client.core.v1.context.LivingEntityRenderLayersContext;
 import fuzs.puzzleslib.api.client.core.v1.context.SkullRenderersContext;
 import fuzs.puzzleslib.api.client.core.v1.context.SpecialBlockModelRenderersContext;
-import fuzs.puzzleslib.api.client.gui.v2.tooltip.ItemTooltipRegistryV3;
+import fuzs.puzzleslib.api.client.gui.v2.tooltip.ItemTooltipRegistry;
 import fuzs.puzzleslib.api.init.v3.registry.ResourceKeyHelper;
 import fuzs.villagemasquerade.VillageMasquerade;
 import fuzs.villagemasquerade.client.model.ClothingModel;
@@ -57,7 +57,7 @@ public class VillageMasqueradeClient implements ClientModConstructor {
 
     @Override
     public void onClientSetup() {
-        ItemTooltipRegistryV3.registerItemTooltip((ItemStack itemStack) -> itemStack.has(ModRegistry.VILLAGER_PROFESSION_DATA_COMPONENT_TYPE.value()),
+        ItemTooltipRegistry.registerItemTooltip((ItemStack itemStack) -> itemStack.has(ModRegistry.VILLAGER_PROFESSION_DATA_COMPONENT_TYPE.value()),
                 (ItemStack itemStack, Item.TooltipContext tooltipContext, TooltipFlag tooltipFlag, @Nullable Player player, Consumer<Component> tooltipLineConsumer) -> {
                     ResourceKey<VillagerProfession> resourceKey = itemStack.get(ModRegistry.VILLAGER_PROFESSION_DATA_COMPONENT_TYPE.value());
                     Holder.Reference<VillagerProfession> holder = tooltipContext.registries()
@@ -66,9 +66,9 @@ public class VillageMasqueradeClient implements ClientModConstructor {
                     tooltipLineConsumer.accept(Component.translatable(VILLAGER_CLOTHING_DESCRIPTION_KEY,
                             holder.value().name()).withStyle(ChatFormatting.GOLD));
                 });
-        ItemTooltipRegistryV3.ITEM.registerItemTooltip(ModTags.ENEMY_CLOTHING_ITEM_TAG,
+        ItemTooltipRegistry.ITEM.registerItemTooltip(ModTags.ENEMY_CLOTHING_ITEM_TAG,
                 Component.translatable(ENEMY_CLOTHING_DESCRIPTION_KEY).withStyle(ChatFormatting.GOLD));
-        ItemTooltipRegistryV3.ITEM.registerItemTooltip(ModTags.WANDERING_TRADER_CLOTHING_ITEM_TAG,
+        ItemTooltipRegistry.ITEM.registerItemTooltip(ModTags.WANDERING_TRADER_CLOTHING_ITEM_TAG,
                 Component.translatable(WANDERING_TRADER_CLOTHING_DESCRIPTION_KEY).withStyle(ChatFormatting.GOLD));
     }
 

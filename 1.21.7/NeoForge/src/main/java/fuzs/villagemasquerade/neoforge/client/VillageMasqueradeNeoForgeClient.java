@@ -6,7 +6,7 @@ import fuzs.villagemasquerade.VillageMasquerade;
 import fuzs.villagemasquerade.client.VillageMasqueradeClient;
 import fuzs.villagemasquerade.data.client.ModLanguageProvider;
 import fuzs.villagemasquerade.data.client.ModModelProvider;
-import fuzs.villagemasquerade.neoforge.data.client.ModEquipmentProvider;
+import fuzs.villagemasquerade.data.client.ModEquipmentProvider;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.fml.common.Mod;
 

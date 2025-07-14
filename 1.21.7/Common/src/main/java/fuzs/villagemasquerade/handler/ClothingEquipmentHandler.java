@@ -59,7 +59,7 @@ public class ClothingEquipmentHandler {
         return EventResult.PASS;
     }
 
-    public static EventResult onEntityLoad(Entity entity, ServerLevel serverLevel) {
+    public static EventResult onEntityLoad(Entity entity, ServerLevel serverLevel, boolean isNewlySpawned) {
         if (entity instanceof IronGolem ironGolem) {
             ironGolem.targetSelector.addGoal(3,
                     new NearestAttackableTargetGoal<>(ironGolem, Player.class, 10, true, false, ENEMY_SELECTOR));

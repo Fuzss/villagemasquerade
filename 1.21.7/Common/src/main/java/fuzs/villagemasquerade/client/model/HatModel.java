@@ -27,7 +27,7 @@ public class HatModel<S extends HumanoidRenderState> extends EntityModel<S> impl
                 PartPose.ZERO);
         PartDefinition partDefinition2 = partDefinition1.addOrReplaceChild("hat0",
                 CubeListBuilder.create(),
-                PartPose.offset(0.0F, 2.03125F, 0.0F));
+                PartPose.offset(0.0F, 2.0F, 0.0F));
         PartDefinition partDefinition3 = partDefinition2.addOrReplaceChild("hat1",
                 CubeListBuilder.create().texOffs(0, 0).addBox(0.0F, 0.0F, 0.0F, 10.0F, 2.0F, 10.0F),
                 PartPose.offset(-5.0F, -10.03125F, -5.0F));

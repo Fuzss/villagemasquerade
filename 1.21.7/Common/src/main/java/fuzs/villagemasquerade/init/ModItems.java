@@ -70,7 +70,7 @@ public class ModItems {
                     VillagerProfession.FISHERMAN));
     public static final Holder.Reference<Item> FISHERMAN_VEST_ITEM = ModRegistry.REGISTRIES.registerItem(
             "fisherman_vest",
-            () -> villagerClothingProperties(EquipmentSlot.BODY,
+            () -> villagerClothingProperties(EquipmentSlot.CHEST,
                     ModEquipmentAssets.FISHERMAN_EQUIPMENT_ASSET,
                     VillagerProfession.FISHERMAN));
     public static final Holder.Reference<Item> FISHERMAN_LEGGINGS_ITEM = ModRegistry.REGISTRIES.registerItem(
