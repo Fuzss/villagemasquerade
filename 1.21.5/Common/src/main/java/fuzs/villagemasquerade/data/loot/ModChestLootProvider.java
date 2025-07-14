@@ -2,8 +2,8 @@ package fuzs.villagemasquerade.data.loot;
 
 import fuzs.puzzleslib.api.data.v2.AbstractLootProvider;
 import fuzs.puzzleslib.api.data.v2.core.DataProviderContext;
+import fuzs.villagemasquerade.init.ModItems;
 import fuzs.villagemasquerade.init.ModLootTables;
-import fuzs.villagemasquerade.init.ModRegistry;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.EmptyLootItem;
@@ -28,9 +28,9 @@ public class ModChestLootProvider extends AbstractLootProvider.Simple {
                 LootTable.lootTable()
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1.0F))
-                                .add(LootItem.lootTableItem(ModRegistry.SANTA_HAT_ITEM.value()))
-                                .add(LootItem.lootTableItem(ModRegistry.SANTA_COAT_ITEM.value()))
-                                .add(LootItem.lootTableItem(ModRegistry.SANTA_LEGGINGS_ITEM.value()))
+                                .add(LootItem.lootTableItem(ModItems.SANTA_HAT_ITEM.value()))
+                                .add(LootItem.lootTableItem(ModItems.SANTA_COAT_ITEM.value()))
+                                .add(LootItem.lootTableItem(ModItems.SANTA_LEGGINGS_ITEM.value()))
                                 .add(EmptyLootItem.emptyItem().setWeight(3))));
     }
 
@@ -38,17 +38,17 @@ public class ModChestLootProvider extends AbstractLootProvider.Simple {
         return LootTable.lootTable()
                 .withPool(LootPool.lootPool()
                         .setRolls(ConstantValue.exactly(1.0F))
-                        .add(LootItem.lootTableItem(ModRegistry.LEGACY_FARMER_ROBE_ITEM.value()))
-                        .add(LootItem.lootTableItem(ModRegistry.LEGACY_LIBRARIAN_ROBE_ITEM.value()))
-                        .add(LootItem.lootTableItem(ModRegistry.LEGACY_PRIEST_ROBE_ITEM.value()))
-                        .add(LootItem.lootTableItem(ModRegistry.LEGACY_NITWIT_ROBE_ITEM.value()))
+                        .add(LootItem.lootTableItem(ModItems.LEGACY_FARMER_ROBE_ITEM.value()))
+                        .add(LootItem.lootTableItem(ModItems.LEGACY_LIBRARIAN_ROBE_ITEM.value()))
+                        .add(LootItem.lootTableItem(ModItems.LEGACY_PRIEST_ROBE_ITEM.value()))
+                        .add(LootItem.lootTableItem(ModItems.LEGACY_NITWIT_ROBE_ITEM.value()))
                         .add(EmptyLootItem.emptyItem().setWeight(4)))
                 .withPool(LootPool.lootPool()
                         .setRolls(ConstantValue.exactly(1.0F))
-                        .add(LootItem.lootTableItem(ModRegistry.LEGACY_FARMER_LEGGINGS_ITEM.value()))
-                        .add(LootItem.lootTableItem(ModRegistry.LEGACY_LIBRARIAN_LEGGINGS_ITEM.value()))
-                        .add(LootItem.lootTableItem(ModRegistry.LEGACY_PRIEST_LEGGINGS_ITEM.value()))
-                        .add(LootItem.lootTableItem(ModRegistry.LEGACY_NITWIT_LEGGINGS_ITEM.value()))
+                        .add(LootItem.lootTableItem(ModItems.LEGACY_FARMER_LEGGINGS_ITEM.value()))
+                        .add(LootItem.lootTableItem(ModItems.LEGACY_LIBRARIAN_LEGGINGS_ITEM.value()))
+                        .add(LootItem.lootTableItem(ModItems.LEGACY_PRIEST_LEGGINGS_ITEM.value()))
+                        .add(LootItem.lootTableItem(ModItems.LEGACY_NITWIT_LEGGINGS_ITEM.value()))
                         .add(EmptyLootItem.emptyItem().setWeight(4)));
     }
 }

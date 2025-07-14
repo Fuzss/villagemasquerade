@@ -6,7 +6,6 @@ import net.minecraft.world.entity.npc.AbstractVillager;
 import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.npc.VillagerDataHolder;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -22,15 +21,6 @@ abstract class VillagerMixin extends AbstractVillager implements VillagerDataHol
 
     @Inject(method = "updateSpecialPrices", at = @At("TAIL"))
     private void updateSpecialPrices(Player player, CallbackInfo callback) {
-        int equippedArmorForProfession = VillagerTradingHelper.getEquippedArmorForProfession(player,
-                this.getVillagerData());
-        if (equippedArmorForProfession > 0) {
-            // same as hero of the village effect, but does stack with it
-            for (MerchantOffer merchantOffer : this.getOffers()) {
-                double priceMultiplier = 0.3 + 0.0625 * equippedArmorForProfession;
-                int newPriceInItems = (int) Math.floor(priceMultiplier * merchantOffer.getBaseCostA().getCount());
-                merchantOffer.addToSpecialPriceDiff(-Math.max(newPriceInItems, 1));
-            }
-        }
+        VillagerTradingHelper.updateSpecialPrices(Villager.class.cast(this), player);
     }
 }

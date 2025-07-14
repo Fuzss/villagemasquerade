@@ -2,7 +2,8 @@ package fuzs.villagemasquerade.data.tags;
 
 import fuzs.puzzleslib.api.data.v2.core.DataProviderContext;
 import fuzs.puzzleslib.api.data.v2.tags.AbstractTagProvider;
-import fuzs.villagemasquerade.init.ModRegistry;
+import fuzs.villagemasquerade.init.ModItems;
+import fuzs.villagemasquerade.init.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.ItemTags;
@@ -17,62 +18,80 @@ public class ModItemTagsProvider extends AbstractTagProvider<Item> {
     @Override
     public void addTags(HolderLookup.Provider registries) {
         this.tag(ItemTags.SKULLS)
-                .add(ModRegistry.VILLAGER_HEAD_ITEM, ModRegistry.IRON_GOLEM_HEAD_ITEM, ModRegistry.ILLAGER_HEAD_ITEM);
-        this.tag(ItemTags.NOTE_BLOCK_TOP_INSTRUMENTS)
-                .add(ModRegistry.VILLAGER_HEAD_ITEM, ModRegistry.IRON_GOLEM_HEAD_ITEM, ModRegistry.ILLAGER_HEAD_ITEM);
-        this.tag(ModRegistry.HEAD_CLOTHING_ITEM_TAG)
-                .add(ModRegistry.ARMORER_GOGGLES_ITEM,
-                        ModRegistry.BUTCHER_HEADBAND_ITEM,
-                        ModRegistry.CARTOGRAPHER_MONOCLE_ITEM,
-                        ModRegistry.CLERIC_COLLAR_ITEM,
-                        ModRegistry.FARMER_HAT_ITEM,
-                        ModRegistry.FISHERMAN_HAT_ITEM,
-                        ModRegistry.FLETCHER_HAT_ITEM,
-                        ModRegistry.LIBRARIAN_HEADWEAR_ITEM,
-                        ModRegistry.SHEPHERD_HAT_ITEM,
-                        ModRegistry.WEAPONSMITH_EYEPATCH_ITEM,
-                        ModRegistry.WANDERING_TRADER_HOOD_ITEM,
-                        ModRegistry.WITCH_HAT_ITEM,
-                        ModRegistry.SANTA_HAT_ITEM);
-        this.tag(ModRegistry.CHEST_CLOTHING_ITEM_TAG)
-                .add(ModRegistry.ARMORER_APRON_ITEM,
-                        ModRegistry.BUTCHER_APRON_ITEM,
-                        ModRegistry.CARTOGRAPHER_HARNESS_ITEM,
-                        ModRegistry.CLERIC_ROBE_ITEM,
-                        ModRegistry.FARMER_BELT_ITEM,
-                        ModRegistry.FISHERMAN_VEST_ITEM,
-                        ModRegistry.FLETCHER_BELT_ITEM,
-                        ModRegistry.LEATHERWORKER_APRON_ITEM,
-                        ModRegistry.LIBRARIAN_TOGA_ITEM,
-                        ModRegistry.MASON_APRON_ITEM,
-                        ModRegistry.NITWIT_ROBE_ITEM,
-                        ModRegistry.SHEPHERD_VEST_ITEM,
-                        ModRegistry.TOOLSMITH_APRON_ITEM,
-                        ModRegistry.WEAPONSMITH_APRON_ITEM,
-                        ModRegistry.LEGACY_FARMER_ROBE_ITEM,
-                        ModRegistry.LEGACY_LIBRARIAN_ROBE_ITEM,
-                        ModRegistry.LEGACY_NITWIT_ROBE_ITEM,
-                        ModRegistry.LEGACY_PRIEST_ROBE_ITEM,
-                        ModRegistry.WANDERING_TRADER_ROBE_ITEM,
-                        ModRegistry.IRON_GOLEM_ROBE_ITEM,
-                        ModRegistry.EVOKER_ROBE_ITEM,
-                        ModRegistry.PILLAGER_JACKET_ITEM,
-                        ModRegistry.VINDICATOR_JACKET_ITEM,
-                        ModRegistry.WITCH_ROBE_ITEM,
-                        ModRegistry.SANTA_COAT_ITEM);
-        this.tag(ModRegistry.LEG_CLOTHING_ITEM_TAG)
-                .add(ModRegistry.FISHERMAN_LEGGINGS_ITEM,
-                        ModRegistry.NITWIT_LEGGINGS_ITEM,
-                        ModRegistry.LEGACY_FARMER_LEGGINGS_ITEM,
-                        ModRegistry.LEGACY_LIBRARIAN_LEGGINGS_ITEM,
-                        ModRegistry.LEGACY_NITWIT_LEGGINGS_ITEM,
-                        ModRegistry.LEGACY_PRIEST_LEGGINGS_ITEM,
-                        ModRegistry.WANDERING_TRADER_LEGGINGS_ITEM,
-                        ModRegistry.IRON_GOLEM_LEGGINGS_ITEM,
-                        ModRegistry.EVOKER_LEGGINGS_ITEM,
-                        ModRegistry.PILLAGER_LEGGINGS_ITEM,
-                        ModRegistry.VINDICATOR_LEGGINGS_ITEM,
-                        ModRegistry.WITCH_LEGGINGS_ITEM,
-                        ModRegistry.SANTA_LEGGINGS_ITEM);
+                .add(ModItems.VILLAGER_HEAD_ITEM, ModItems.IRON_GOLEM_HEAD_ITEM, ModItems.ILLAGER_HEAD_ITEM);
+        this.tag(ItemTags.NOTE_BLOCK_TOP_INSTRUMENTS).add(ModItems.VILLAGER_HEAD_ITEM, ModItems.ILLAGER_HEAD_ITEM);
+        this.tag(ModTags.HEAD_CLOTHING_ITEM_TAG)
+                .add(ModItems.ARMORER_GOGGLES_ITEM,
+                        ModItems.BUTCHER_HEADBAND_ITEM,
+                        ModItems.CARTOGRAPHER_MONOCLE_ITEM,
+                        ModItems.CLERIC_COLLAR_ITEM,
+                        ModItems.FARMER_HAT_ITEM,
+                        ModItems.FISHERMAN_HAT_ITEM,
+                        ModItems.FLETCHER_HAT_ITEM,
+                        ModItems.LIBRARIAN_HEADWEAR_ITEM,
+                        ModItems.SHEPHERD_HAT_ITEM,
+                        ModItems.WEAPONSMITH_EYEPATCH_ITEM,
+                        ModItems.WANDERING_TRADER_HOOD_ITEM,
+                        ModItems.WITCH_HAT_ITEM,
+                        ModItems.SANTA_HAT_ITEM);
+        this.tag(ModTags.CHEST_CLOTHING_ITEM_TAG)
+                .add(ModItems.ARMORER_APRON_ITEM,
+                        ModItems.BUTCHER_APRON_ITEM,
+                        ModItems.CARTOGRAPHER_HARNESS_ITEM,
+                        ModItems.CLERIC_ROBE_ITEM,
+                        ModItems.FARMER_BELT_ITEM,
+                        ModItems.FISHERMAN_VEST_ITEM,
+                        ModItems.FLETCHER_BELT_ITEM,
+                        ModItems.LEATHERWORKER_APRON_ITEM,
+                        ModItems.LIBRARIAN_TOGA_ITEM,
+                        ModItems.MASON_APRON_ITEM,
+                        ModItems.NITWIT_ROBE_ITEM,
+                        ModItems.SHEPHERD_VEST_ITEM,
+                        ModItems.TOOLSMITH_APRON_ITEM,
+                        ModItems.WEAPONSMITH_APRON_ITEM,
+                        ModItems.LEGACY_FARMER_ROBE_ITEM,
+                        ModItems.LEGACY_LIBRARIAN_ROBE_ITEM,
+                        ModItems.LEGACY_NITWIT_ROBE_ITEM,
+                        ModItems.LEGACY_PRIEST_ROBE_ITEM,
+                        ModItems.WANDERING_TRADER_ROBE_ITEM,
+                        ModItems.IRON_GOLEM_ROBE_ITEM,
+                        ModItems.EVOKER_ROBE_ITEM,
+                        ModItems.PILLAGER_JACKET_ITEM,
+                        ModItems.VINDICATOR_JACKET_ITEM,
+                        ModItems.WITCH_ROBE_ITEM,
+                        ModItems.SANTA_COAT_ITEM);
+        this.tag(ModTags.LEG_CLOTHING_ITEM_TAG)
+                .add(ModItems.FISHERMAN_LEGGINGS_ITEM,
+                        ModItems.NITWIT_LEGGINGS_ITEM,
+                        ModItems.LEGACY_FARMER_LEGGINGS_ITEM,
+                        ModItems.LEGACY_LIBRARIAN_LEGGINGS_ITEM,
+                        ModItems.LEGACY_NITWIT_LEGGINGS_ITEM,
+                        ModItems.LEGACY_PRIEST_LEGGINGS_ITEM,
+                        ModItems.WANDERING_TRADER_LEGGINGS_ITEM,
+                        ModItems.IRON_GOLEM_LEGGINGS_ITEM,
+                        ModItems.EVOKER_LEGGINGS_ITEM,
+                        ModItems.PILLAGER_LEGGINGS_ITEM,
+                        ModItems.VINDICATOR_LEGGINGS_ITEM,
+                        ModItems.WITCH_LEGGINGS_ITEM,
+                        ModItems.SANTA_LEGGINGS_ITEM);
+        this.tag(ModTags.WANDERING_TRADER_CLOTHING_ITEM_TAG)
+                .add(ModItems.WANDERING_TRADER_HOOD_ITEM,
+                        ModItems.WANDERING_TRADER_ROBE_ITEM,
+                        ModItems.WANDERING_TRADER_LEGGINGS_ITEM);
+        this.tag(ModTags.EVOKER_CLOTHING_ITEM_TAG)
+                .add(ModItems.ILLAGER_HEAD_ITEM, ModItems.EVOKER_ROBE_ITEM, ModItems.EVOKER_LEGGINGS_ITEM);
+        this.tag(ModTags.PILLAGER_CLOTHING_ITEM_TAG)
+                .add(ModItems.ILLAGER_HEAD_ITEM, ModItems.PILLAGER_JACKET_ITEM, ModItems.PILLAGER_LEGGINGS_ITEM);
+        this.tag(ModTags.VINDICATOR_CLOTHING_ITEM_TAG)
+                .add(ModItems.ILLAGER_HEAD_ITEM, ModItems.VINDICATOR_JACKET_ITEM, ModItems.VINDICATOR_LEGGINGS_ITEM);
+        this.tag(ModTags.WITCH_CLOTHING_ITEM_TAG)
+                .add(ModItems.WITCH_HAT_ITEM, ModItems.WITCH_ROBE_ITEM, ModItems.WITCH_LEGGINGS_ITEM);
+        this.tag(ModTags.ENEMY_CLOTHING_ITEM_TAG)
+                .addTag(ModTags.EVOKER_CLOTHING_ITEM_TAG,
+                        ModTags.PILLAGER_CLOTHING_ITEM_TAG,
+                        ModTags.VINDICATOR_CLOTHING_ITEM_TAG,
+                        ModTags.WITCH_CLOTHING_ITEM_TAG);
+        this.tag(ModTags.SANTA_CLOTHING_ITEM_TAG)
+                .add(ModItems.SANTA_HAT_ITEM, ModItems.SANTA_COAT_ITEM, ModItems.SANTA_LEGGINGS_ITEM);
     }
 }

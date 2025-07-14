@@ -6,12 +6,14 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.EquipmentSlotGroup;
+import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.npc.VillagerData;
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.trading.MerchantOffer;
 
 public class VillagerTradingHelper {
 
@@ -36,6 +38,7 @@ public class VillagerTradingHelper {
     private static EquipmentSlot getArmorEquipmentSlot(Item item) {
         if (item.components().has(DataComponents.EQUIPPABLE)) {
             EquipmentSlot equipmentSlot = item.components().get(DataComponents.EQUIPPABLE).slot();
+
             if (equipmentSlot.getType() == EquipmentSlot.Type.HUMANOID_ARMOR) {
                 return equipmentSlot;
             }
@@ -53,17 +56,32 @@ public class VillagerTradingHelper {
         };
     }
 
-    public static int getEquippedArmorForProfession(Player player, VillagerData villagerData) {
+    public static void updateSpecialPrices(Villager villager, Player player) {
+        int equippedArmorForProfession = getEquippedArmorForProfession(player, villager.getVillagerData());
+        if (equippedArmorForProfession > 0) {
+            // same as hero of the village effect, but does stack with it
+            for (MerchantOffer merchantOffer : villager.getOffers()) {
+                double priceMultiplier = 0.3 + 0.0625 * equippedArmorForProfession;
+                int newPriceInItems = (int) Math.floor(priceMultiplier * merchantOffer.getBaseCostA().getCount());
+                merchantOffer.addToSpecialPriceDiff(-Math.max(newPriceInItems, 1));
+            }
+        }
+    }
+
+    private static int getEquippedArmorForProfession(Player player, VillagerData villagerData) {
         int equippedArmorForProfession = 0;
+
         for (EquipmentSlot equipmentSlot : EquipmentSlotGroup.ARMOR) {
             if (equipmentSlot.getType() == EquipmentSlot.Type.HUMANOID_ARMOR) {
                 ItemStack itemStack = player.getItemBySlot(equipmentSlot);
                 ResourceKey<VillagerProfession> resourceKey = itemStack.get(ModRegistry.VILLAGER_PROFESSION_DATA_COMPONENT_TYPE.value());
+
                 if (resourceKey != null && villagerData.profession().is(resourceKey)) {
                     equippedArmorForProfession++;
                 }
             }
         }
+
         return equippedArmorForProfession;
     }
 }

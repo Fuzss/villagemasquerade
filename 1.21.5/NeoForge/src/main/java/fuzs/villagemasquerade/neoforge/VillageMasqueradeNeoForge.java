@@ -7,6 +7,7 @@ import fuzs.villagemasquerade.data.loot.ModBlockLootProvider;
 import fuzs.villagemasquerade.data.loot.ModChestLootProvider;
 import fuzs.villagemasquerade.data.loot.ModEntityLootProvider;
 import fuzs.villagemasquerade.data.tags.ModItemTagsProvider;
+import fuzs.villagemasquerade.data.tags.ModMobEffectTagsProvider;
 import net.neoforged.fml.common.Mod;
 
 @Mod(VillageMasquerade.MOD_ID)
@@ -18,6 +19,7 @@ public class VillageMasqueradeNeoForge {
                 ModBlockLootProvider::new,
                 ModChestLootProvider::new,
                 ModEntityLootProvider::new,
-                ModItemTagsProvider::new);
+                ModItemTagsProvider::new,
+                ModMobEffectTagsProvider::new);
     }
 }

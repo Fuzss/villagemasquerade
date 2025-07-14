@@ -2,8 +2,8 @@ package fuzs.villagemasquerade.data.loot;
 
 import fuzs.puzzleslib.api.data.v2.AbstractLootProvider;
 import fuzs.puzzleslib.api.data.v2.core.DataProviderContext;
+import fuzs.villagemasquerade.init.ModItems;
 import fuzs.villagemasquerade.init.ModLootTables;
-import fuzs.villagemasquerade.init.ModRegistry;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
@@ -24,8 +24,8 @@ public class ModEntityLootProvider extends AbstractLootProvider.Simple {
                 LootTable.lootTable()
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1.0F))
-                                .add(LootItem.lootTableItem(ModRegistry.EVOKER_ROBE_ITEM.value()))
-                                .add(LootItem.lootTableItem(ModRegistry.EVOKER_LEGGINGS_ITEM.value()))
+                                .add(LootItem.lootTableItem(ModItems.EVOKER_ROBE_ITEM.value()))
+                                .add(LootItem.lootTableItem(ModItems.EVOKER_LEGGINGS_ITEM.value()))
                                 .when(LootItemKilledByPlayerCondition.killedByPlayer())
                                 .when(LootItemRandomChanceWithEnchantedBonusCondition.randomChanceAndLootingBoost(this.registries(),
                                         0.025F,
@@ -34,8 +34,8 @@ public class ModEntityLootProvider extends AbstractLootProvider.Simple {
                 LootTable.lootTable()
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1.0F))
-                                .add(LootItem.lootTableItem(ModRegistry.VINDICATOR_JACKET_ITEM.value()))
-                                .add(LootItem.lootTableItem(ModRegistry.VINDICATOR_LEGGINGS_ITEM.value()))
+                                .add(LootItem.lootTableItem(ModItems.VINDICATOR_JACKET_ITEM.value()))
+                                .add(LootItem.lootTableItem(ModItems.VINDICATOR_LEGGINGS_ITEM.value()))
                                 .when(LootItemKilledByPlayerCondition.killedByPlayer())
                                 .when(LootItemRandomChanceWithEnchantedBonusCondition.randomChanceAndLootingBoost(this.registries(),
                                         0.025F,
@@ -44,8 +44,8 @@ public class ModEntityLootProvider extends AbstractLootProvider.Simple {
                 LootTable.lootTable()
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1.0F))
-                                .add(LootItem.lootTableItem(ModRegistry.PILLAGER_JACKET_ITEM.value()))
-                                .add(LootItem.lootTableItem(ModRegistry.PILLAGER_LEGGINGS_ITEM.value()))
+                                .add(LootItem.lootTableItem(ModItems.PILLAGER_JACKET_ITEM.value()))
+                                .add(LootItem.lootTableItem(ModItems.PILLAGER_LEGGINGS_ITEM.value()))
                                 .when(LootItemKilledByPlayerCondition.killedByPlayer())
                                 .when(LootItemRandomChanceWithEnchantedBonusCondition.randomChanceAndLootingBoost(this.registries(),
                                         0.025F,
@@ -54,9 +54,9 @@ public class ModEntityLootProvider extends AbstractLootProvider.Simple {
                 LootTable.lootTable()
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1.0F))
-                                .add(LootItem.lootTableItem(ModRegistry.WITCH_HAT_ITEM.value()))
-                                .add(LootItem.lootTableItem(ModRegistry.WITCH_ROBE_ITEM.value()))
-                                .add(LootItem.lootTableItem(ModRegistry.WITCH_LEGGINGS_ITEM.value()))
+                                .add(LootItem.lootTableItem(ModItems.WITCH_HAT_ITEM.value()))
+                                .add(LootItem.lootTableItem(ModItems.WITCH_ROBE_ITEM.value()))
+                                .add(LootItem.lootTableItem(ModItems.WITCH_LEGGINGS_ITEM.value()))
                                 .when(LootItemKilledByPlayerCondition.killedByPlayer())
                                 .when(LootItemRandomChanceWithEnchantedBonusCondition.randomChanceAndLootingBoost(this.registries(),
                                         0.025F,
@@ -65,8 +65,8 @@ public class ModEntityLootProvider extends AbstractLootProvider.Simple {
                 LootTable.lootTable()
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1.0F))
-                                .add(LootItem.lootTableItem(ModRegistry.IRON_GOLEM_ROBE_ITEM.value()))
-                                .add(LootItem.lootTableItem(ModRegistry.IRON_GOLEM_LEGGINGS_ITEM.value()))
+                                .add(LootItem.lootTableItem(ModItems.IRON_GOLEM_ROBE_ITEM.value()))
+                                .add(LootItem.lootTableItem(ModItems.IRON_GOLEM_LEGGINGS_ITEM.value()))
                                 .when(LootItemKilledByPlayerCondition.killedByPlayer())
                                 .when(LootItemRandomChanceWithEnchantedBonusCondition.randomChanceAndLootingBoost(this.registries(),
                                         0.025F,

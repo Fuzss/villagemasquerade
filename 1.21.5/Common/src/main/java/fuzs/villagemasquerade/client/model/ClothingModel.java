@@ -16,14 +16,13 @@ public class ClothingModel<S extends HumanoidRenderState> extends HumanoidModel<
     }
 
     public static LayerDefinition createBodyLayer() {
-        CubeDeformation cubeDeformation = new CubeDeformation(0.25F);
-        MeshDefinition meshDefinition = createMesh(cubeDeformation, 0.0F);
+        MeshDefinition meshDefinition = createMesh(new CubeDeformation(0.25F), 0.0F);
         PartDefinition partDefinition = meshDefinition.getRoot();
         partDefinition.getChild("head")
                 .addOrReplaceChild("hat_rim",
                         CubeListBuilder.create()
-                                .texOffs(1, 32)
-                                .addBox(-8.0F, -8.0F, -5.0F, 16.0F, 16.0F, 1.0F, cubeDeformation),
+                                .texOffs(0, 32)
+                                .addBox(-8.0F, -8.0F, -5.0F, 16.0F, 16.0F, 0.0F, CubeDeformation.NONE),
                         PartPose.rotation(-Mth.HALF_PI, 0.0F, 0.0F));
         return LayerDefinition.create(meshDefinition, 64, 64);
     }
