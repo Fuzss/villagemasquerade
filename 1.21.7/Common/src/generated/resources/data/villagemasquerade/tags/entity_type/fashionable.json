@@ -4,9 +4,14 @@
     "minecraft:bogged",
     "minecraft:drowned",
     "minecraft:husk",
+    "minecraft:player",
     "minecraft:stray",
     "minecraft:skeleton",
     "minecraft:wither_skeleton",
-    "minecraft:zombie"
+    "minecraft:zombie",
+    {
+      "id": "strawstatues:straw_statue",
+      "required": false
+    }
   ]
 }
