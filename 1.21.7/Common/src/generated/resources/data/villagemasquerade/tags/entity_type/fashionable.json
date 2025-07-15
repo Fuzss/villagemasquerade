@@ -1,0 +1,12 @@
+{
+  "values": [
+    "minecraft:armor_stand",
+    "minecraft:bogged",
+    "minecraft:drowned",
+    "minecraft:husk",
+    "minecraft:stray",
+    "minecraft:skeleton",
+    "minecraft:wither_skeleton",
+    "minecraft:zombie"
+  ]
+}

@@ -41,22 +41,25 @@ public class ClothingEquipmentHandler {
 
     public static EventResult onLivingDrops(LivingEntity livingEntity, DamageSource damageSource, Collection<ItemEntity> itemDrops, boolean recentlyHit) {
         if (damageSource.getEntity() instanceof Creeper creeper && creeper.canDropMobsSkull()) {
-            Holder<Item> item;
-            if (livingEntity.getType().is(EntityTypeTags.ILLAGER)) {
-                item = ModItems.ILLAGER_HEAD_ITEM;
-            } else if (livingEntity instanceof Villager) {
-                item = ModItems.VILLAGER_HEAD_ITEM;
-            } else if (livingEntity instanceof IronGolem) {
-                item = ModItems.IRON_GOLEM_HEAD_ITEM;
-            } else {
-                item = null;
-            }
-            if (item != null) {
-                livingEntity.spawnAtLocation((ServerLevel) livingEntity.level(), new ItemStack(item));
+            Holder<Item> holder = getHeadItem(livingEntity);
+            if (holder != null) {
+                livingEntity.spawnAtLocation((ServerLevel) livingEntity.level(), new ItemStack(holder));
                 creeper.increaseDroppedSkulls();
             }
         }
         return EventResult.PASS;
+    }
+
+    private static @Nullable Holder<Item> getHeadItem(LivingEntity livingEntity) {
+        if (livingEntity.getType().is(EntityTypeTags.ILLAGER)) {
+            return ModItems.ILLAGER_HEAD_ITEM;
+        } else if (livingEntity instanceof Villager) {
+            return ModItems.VILLAGER_HEAD_ITEM;
+        } else if (livingEntity instanceof IronGolem) {
+            return ModItems.IRON_GOLEM_HEAD_ITEM;
+        } else {
+            return null;
+        }
     }
 
     public static EventResult onEntityLoad(Entity entity, ServerLevel serverLevel, boolean isNewlySpawned) {

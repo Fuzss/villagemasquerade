@@ -20,6 +20,8 @@ public class ModItemTagsProvider extends AbstractTagProvider<Item> {
         this.tag(ItemTags.SKULLS)
                 .add(ModItems.VILLAGER_HEAD_ITEM, ModItems.IRON_GOLEM_HEAD_ITEM, ModItems.ILLAGER_HEAD_ITEM);
         this.tag(ItemTags.NOTE_BLOCK_TOP_INSTRUMENTS).add(ModItems.VILLAGER_HEAD_ITEM, ModItems.ILLAGER_HEAD_ITEM);
+        this.tag(ModTags.CLOTHING_ITEM_TAG)
+                .addTag(ModTags.HEAD_CLOTHING_ITEM_TAG, ModTags.CHEST_CLOTHING_ITEM_TAG, ModTags.LEG_CLOTHING_ITEM_TAG);
         this.tag(ModTags.HEAD_CLOTHING_ITEM_TAG)
                 .add(ModItems.ARMORER_GOGGLES_ITEM,
                         ModItems.BUTCHER_HEADBAND_ITEM,

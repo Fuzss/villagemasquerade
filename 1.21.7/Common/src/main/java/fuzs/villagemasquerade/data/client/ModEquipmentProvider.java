@@ -7,7 +7,6 @@ import fuzs.villagemasquerade.client.model.geom.ModModelLayers;
 import fuzs.villagemasquerade.init.ModEquipmentAssets;
 import net.minecraft.client.resources.model.EquipmentClientInfo;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.equipment.EquipmentAsset;
 
 import java.util.function.BiConsumer;
@@ -54,11 +53,5 @@ public class ModEquipmentProvider extends AbstractEquipmentProvider {
     public final void addClothingLayer(BiConsumer<ResourceKey<EquipmentAsset>, EquipmentClientInfo> equipmentAssetConsumer, ResourceKey<EquipmentAsset> resourceKey) {
         equipmentAssetConsumer.accept(resourceKey,
                 simple(ModModelLayers.CLOTHING_LAYER_TYPE, VillageMasquerade.id(resourceKey.location().getPath())));
-    }
-
-    public static EquipmentClientInfo simple(EquipmentClientInfo.LayerType layerType, ResourceLocation resourceLocation) {
-        return EquipmentClientInfo.builder()
-                .addLayers(layerType, new EquipmentClientInfo.Layer(resourceLocation))
-                .build();
     }
 }

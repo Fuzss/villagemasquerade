@@ -42,7 +42,6 @@ public class HatModel<S extends HumanoidRenderState> extends EntityModel<S> impl
                         .texOffs(0, 31)
                         .addBox(0.0F, 0.0F, 0.0F, 1.0F, 2.0F, 1.0F, new CubeDeformation(0.25F)),
                 PartPose.offsetAndRotation(1.75F, -2.0F, 2.0F, (float) (-Math.PI / 15), 0.0F, 0.10471976F));
-
         return LayerDefinition.create(meshDefinition, 64, 64);
     }
 
@@ -67,7 +66,7 @@ public class HatModel<S extends HumanoidRenderState> extends EntityModel<S> impl
                 CubeListBuilder.create()
                         .texOffs(0, 55)
                         .addBox(-4.0F, -0.5F, -4.0F, 8.0F, 1.0F, 8.0F, new CubeDeformation(0.85F)),
-                PartPose.offsetAndRotation(0.0F, -6.75F, 0.0F, -0.1309F, 0.0F, 0.0F));
+                PartPose.offsetAndRotation(0.0F, -7.18F, 0.0F, -0.1309F, 0.0F, 0.0F));
         PartDefinition partDefinition3 = partDefinition2.addOrReplaceChild("hat2",
                 CubeListBuilder.create()
                         .texOffs(32, 53)

@@ -1,10 +1,11 @@
 package fuzs.villagemasquerade.client;
 
+import com.mojang.blaze3d.vertex.PoseStack;
 import fuzs.puzzleslib.api.client.core.v1.ClientModConstructor;
 import fuzs.puzzleslib.api.client.core.v1.context.LayerDefinitionsContext;
-import fuzs.puzzleslib.api.client.core.v1.context.LivingEntityRenderLayersContext;
 import fuzs.puzzleslib.api.client.core.v1.context.SkullRenderersContext;
 import fuzs.puzzleslib.api.client.core.v1.context.SpecialBlockModelRenderersContext;
+import fuzs.puzzleslib.api.client.event.v1.renderer.AddLivingEntityRenderLayersCallback;
 import fuzs.puzzleslib.api.client.gui.v2.tooltip.ItemTooltipRegistry;
 import fuzs.puzzleslib.api.init.v3.registry.ResourceKeyHelper;
 import fuzs.villagemasquerade.VillageMasquerade;
@@ -19,13 +20,17 @@ import fuzs.villagemasquerade.init.ModRegistry;
 import fuzs.villagemasquerade.init.ModTags;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.model.PlayerModel;
 import net.minecraft.client.model.SkullModel;
 import net.minecraft.client.model.geom.EntityModelSet;
+import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
+import net.minecraft.client.model.geom.builders.MeshTransformer;
+import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.PlayerRenderState;
+import net.minecraft.client.renderer.entity.HuskRenderer;
+import net.minecraft.client.renderer.entity.LivingEntityRenderer;
+import net.minecraft.client.renderer.entity.WitherSkeletonRenderer;
+import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
 import net.minecraft.client.renderer.special.SkullSpecialRenderer;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
@@ -53,6 +58,81 @@ public class VillageMasqueradeClient implements ClientModConstructor {
     @Override
     public void onConstructMod() {
         ModModelLayers.bootstrap();
+        registerEventHandlers();
+    }
+
+    private static void registerEventHandlers() {
+        AddLivingEntityRenderLayersCallback.EVENT.register((EntityType<?> entityType, LivingEntityRenderer<?, ?, ?> entityRenderer, EntityRendererProvider.Context context) -> {
+            if (entityRenderer instanceof HuskRenderer huskRenderer) {
+                addHumanoidLayers(entityType,
+                        huskRenderer,
+                        ModModelLayers.HUSK_CLOTHING,
+                        ModModelLayers.HUSK_BABY_CLOTHING,
+                        ModModelLayers.HUSK_WITCH_HAT,
+                        ModModelLayers.HUSK_BABY_WITCH_HAT,
+                        ModModelLayers.HUSK_SANTA_HAT,
+                        ModModelLayers.HUSK_BABY_SANTA_HAT,
+                        context);
+            } else if (entityRenderer instanceof WitherSkeletonRenderer witherSkeletonRenderer) {
+                addHumanoidLayers(entityType,
+                        witherSkeletonRenderer,
+                        ModModelLayers.WITHER_SKELETON_CLOTHING,
+                        ModModelLayers.WITHER_SKELETON_BABY_CLOTHING,
+                        ModModelLayers.WITHER_SKELETON_WITCH_HAT,
+                        ModModelLayers.WITHER_SKELETON_BABY_WITCH_HAT,
+                        ModModelLayers.WITHER_SKELETON_SANTA_HAT,
+                        ModModelLayers.WITHER_SKELETON_BABY_SANTA_HAT,
+                        context);
+            } else if (entityRenderer.getModel() instanceof HumanoidModel<?>) {
+                addHumanoidLayers(entityType,
+                        (LivingEntityRenderer<?, HumanoidRenderState, HumanoidModel<HumanoidRenderState>>) entityRenderer,
+                        ModModelLayers.HUMANOID_CLOTHING,
+                        ModModelLayers.HUMANOID_BABY_CLOTHING,
+                        ModModelLayers.HUMANOID_WITCH_HAT,
+                        ModModelLayers.HUMANOID_BABY_WITCH_HAT,
+                        ModModelLayers.HUMANOID_SANTA_HAT,
+                        ModModelLayers.HUMANOID_BABY_SANTA_HAT,
+                        context);
+            }
+        });
+    }
+
+    private static <S extends HumanoidRenderState, M extends HumanoidModel<S>> void addHumanoidLayers(EntityType<?> entityType, LivingEntityRenderer<?, S, M> entityRenderer, ModelLayerLocation clothingLocation, ModelLayerLocation clothingBabyLocation, ModelLayerLocation witchHatLocation, ModelLayerLocation witchHatBabyLocation, ModelLayerLocation santaHatLocation, ModelLayerLocation santaHatBabyLocation, EntityRendererProvider.Context context) {
+        entityRenderer.addLayer(new HumanoidClothingLayer<>(entityRenderer,
+                new ClothingModel<>(context.bakeLayer(clothingLocation)),
+                new ClothingModel<>(context.bakeLayer(clothingBabyLocation)),
+                context.getEquipmentRenderer()) {
+            @Override
+            public void render(PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, S renderState, float yRot, float xRot) {
+                if (entityType.is(ModTags.FASHIONABLE_ENTITY_TYPE_TAG)) {
+                    super.render(poseStack, bufferSource, packedLight, renderState, yRot, xRot);
+                }
+            }
+        });
+        entityRenderer.addLayer(new HumanoidHatLayer<>(entityRenderer,
+                new HatModel<>(context.bakeLayer(witchHatLocation)),
+                new HatModel<>(context.bakeLayer(witchHatBabyLocation)),
+                ModModelLayers.WITCH_HAT_LAYER_TYPE,
+                context.getEquipmentRenderer()) {
+            @Override
+            public void render(PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, S renderState, float yRot, float xRot) {
+                if (entityType.is(ModTags.FASHIONABLE_ENTITY_TYPE_TAG)) {
+                    super.render(poseStack, bufferSource, packedLight, renderState, yRot, xRot);
+                }
+            }
+        });
+        entityRenderer.addLayer(new HumanoidHatLayer<>(entityRenderer,
+                new HatModel<>(context.bakeLayer(santaHatLocation)),
+                new HatModel<>(context.bakeLayer(santaHatBabyLocation)),
+                ModModelLayers.SANTA_HAT_LAYER_TYPE,
+                context.getEquipmentRenderer()) {
+            @Override
+            public void render(PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, S renderState, float yRot, float xRot) {
+                if (entityType.is(ModTags.FASHIONABLE_ENTITY_TYPE_TAG)) {
+                    super.render(poseStack, bufferSource, packedLight, renderState, yRot, xRot);
+                }
+            }
+        });
     }
 
     @Override
@@ -74,6 +154,12 @@ public class VillageMasqueradeClient implements ClientModConstructor {
 
     @Override
     public void onRegisterLayerDefinitions(LayerDefinitionsContext context) {
+        context.registerLayerDefinition(ModModelLayers.VILLAGER_HEAD,
+                () -> LayerDefinition.create(VillagerHeadModel.createVillagerHeadModel(), 64, 64));
+        context.registerLayerDefinition(ModModelLayers.IRON_GOLEM_HEAD,
+                () -> LayerDefinition.create(VillagerHeadModel.createVillagerHeadModel(), 128, 128));
+        context.registerLayerDefinition(ModModelLayers.ILLAGER_HEAD,
+                () -> LayerDefinition.create(VillagerHeadModel.createVillagerHeadModel(), 64, 64));
         context.registerLayerDefinition(ModModelLayers.HUMANOID_CLOTHING, ClothingModel::createBodyLayer);
         context.registerLayerDefinition(ModModelLayers.HUMANOID_BABY_CLOTHING,
                 () -> ClothingModel.createBodyLayer().apply(HumanoidModel.BABY_TRANSFORMER));
@@ -83,39 +169,38 @@ public class VillageMasqueradeClient implements ClientModConstructor {
         context.registerLayerDefinition(ModModelLayers.HUMANOID_SANTA_HAT, HatModel::createSantaHatLayer);
         context.registerLayerDefinition(ModModelLayers.HUMANOID_BABY_SANTA_HAT,
                 () -> HatModel.createSantaHatLayer().apply(HumanoidModel.BABY_TRANSFORMER));
-        context.registerLayerDefinition(ModModelLayers.VILLAGER_HEAD,
-                () -> LayerDefinition.create(VillagerHeadModel.createVillagerHeadModel(), 64, 64));
-        context.registerLayerDefinition(ModModelLayers.IRON_GOLEM_HEAD,
-                () -> LayerDefinition.create(VillagerHeadModel.createVillagerHeadModel(), 128, 128));
-        context.registerLayerDefinition(ModModelLayers.ILLAGER_HEAD,
-                () -> LayerDefinition.create(VillagerHeadModel.createVillagerHeadModel(), 64, 64));
-    }
-
-    @Override
-    public void onRegisterLivingEntityRenderLayers(LivingEntityRenderLayersContext context) {
-        context.registerRenderLayer(EntityType.PLAYER,
-                (RenderLayerParent<PlayerRenderState, PlayerModel> renderer, EntityRendererProvider.Context contextX) -> {
-                    return new HumanoidClothingLayer<>(renderer,
-                            new ClothingModel<>(contextX.bakeLayer(ModModelLayers.HUMANOID_CLOTHING)),
-                            new ClothingModel<>(contextX.bakeLayer(ModModelLayers.HUMANOID_BABY_CLOTHING)),
-                            contextX.getEquipmentRenderer());
-                });
-        context.registerRenderLayer(EntityType.PLAYER,
-                (RenderLayerParent<PlayerRenderState, PlayerModel> renderer, EntityRendererProvider.Context contextX) -> {
-                    return new HumanoidHatLayer<>(renderer,
-                            new HatModel<>(contextX.bakeLayer(ModModelLayers.HUMANOID_WITCH_HAT)),
-                            new HatModel<>(contextX.bakeLayer(ModModelLayers.HUMANOID_BABY_WITCH_HAT)),
-                            ModModelLayers.WITCH_HAT_LAYER_TYPE,
-                            contextX.getEquipmentRenderer());
-                });
-        context.registerRenderLayer(EntityType.PLAYER,
-                (RenderLayerParent<PlayerRenderState, PlayerModel> renderer, EntityRendererProvider.Context contextX) -> {
-                    return new HumanoidHatLayer<>(renderer,
-                            new HatModel<>(contextX.bakeLayer(ModModelLayers.HUMANOID_SANTA_HAT)),
-                            new HatModel<>(contextX.bakeLayer(ModModelLayers.HUMANOID_BABY_SANTA_HAT)),
-                            ModModelLayers.SANTA_HAT_LAYER_TYPE,
-                            contextX.getEquipmentRenderer());
-                });
+        MeshTransformer huskTransformer = MeshTransformer.scaling(1.0625F);
+        context.registerLayerDefinition(ModModelLayers.HUSK_CLOTHING,
+                () -> ClothingModel.createBodyLayer().apply(huskTransformer));
+        context.registerLayerDefinition(ModModelLayers.HUSK_BABY_CLOTHING,
+                () -> ClothingModel.createBodyLayer().apply(HumanoidModel.BABY_TRANSFORMER).apply(huskTransformer));
+        context.registerLayerDefinition(ModModelLayers.HUSK_WITCH_HAT,
+                () -> HatModel.createWitchHatLayer().apply(huskTransformer));
+        context.registerLayerDefinition(ModModelLayers.HUSK_BABY_WITCH_HAT,
+                () -> HatModel.createWitchHatLayer().apply(HumanoidModel.BABY_TRANSFORMER).apply(huskTransformer));
+        context.registerLayerDefinition(ModModelLayers.HUSK_SANTA_HAT,
+                () -> HatModel.createSantaHatLayer().apply(huskTransformer));
+        context.registerLayerDefinition(ModModelLayers.HUSK_BABY_SANTA_HAT,
+                () -> HatModel.createSantaHatLayer().apply(HumanoidModel.BABY_TRANSFORMER).apply(huskTransformer));
+        MeshTransformer witherSkeletonTransformer = MeshTransformer.scaling(1.2F);
+        context.registerLayerDefinition(ModModelLayers.WITHER_SKELETON_CLOTHING,
+                () -> ClothingModel.createBodyLayer().apply(witherSkeletonTransformer));
+        context.registerLayerDefinition(ModModelLayers.WITHER_SKELETON_BABY_CLOTHING,
+                () -> ClothingModel.createBodyLayer()
+                        .apply(HumanoidModel.BABY_TRANSFORMER)
+                        .apply(witherSkeletonTransformer));
+        context.registerLayerDefinition(ModModelLayers.WITHER_SKELETON_WITCH_HAT,
+                () -> HatModel.createWitchHatLayer().apply(witherSkeletonTransformer));
+        context.registerLayerDefinition(ModModelLayers.WITHER_SKELETON_BABY_WITCH_HAT,
+                () -> HatModel.createWitchHatLayer()
+                        .apply(HumanoidModel.BABY_TRANSFORMER)
+                        .apply(witherSkeletonTransformer));
+        context.registerLayerDefinition(ModModelLayers.WITHER_SKELETON_SANTA_HAT,
+                () -> HatModel.createSantaHatLayer().apply(witherSkeletonTransformer));
+        context.registerLayerDefinition(ModModelLayers.WITHER_SKELETON_BABY_SANTA_HAT,
+                () -> HatModel.createSantaHatLayer()
+                        .apply(HumanoidModel.BABY_TRANSFORMER)
+                        .apply(witherSkeletonTransformer));
     }
 
     @Override
