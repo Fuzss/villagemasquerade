@@ -1,4 +1,4 @@
-// 1.21.7	2025-07-14T14:21:41.12577	Mod Chest Loot Provider
+// 1.21.8	2025-07-18T13:34:46.528272	Mod Chest Loot Provider
 847eeab50de02ee7cfc44cd7f46df349ca8c5ba7 data/villagemasquerade/loot_table/inject/chests/igloo_chest.json
 3b31821758060d15f280874a9fe673b6d0ba1898 data/villagemasquerade/loot_table/inject/chests/village/village_desert_house.json
 a19de03693de251bc81ed648a0f6f712fafff75b data/villagemasquerade/loot_table/inject/chests/village/village_plains_house.json

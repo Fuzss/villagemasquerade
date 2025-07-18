@@ -137,7 +137,7 @@ public class VillageMasqueradeClient implements ClientModConstructor {
 
     @Override
     public void onClientSetup() {
-        ItemTooltipRegistry.registerItemTooltip((ItemStack itemStack) -> itemStack.has(ModRegistry.VILLAGER_PROFESSION_DATA_COMPONENT_TYPE.value()),
+        ItemTooltipRegistry.ITEM.registerItemTooltip((ItemStack itemStack) -> itemStack.has(ModRegistry.VILLAGER_PROFESSION_DATA_COMPONENT_TYPE.value()),
                 (ItemStack itemStack, Item.TooltipContext tooltipContext, TooltipFlag tooltipFlag, @Nullable Player player, Consumer<Component> tooltipLineConsumer) -> {
                     ResourceKey<VillagerProfession> resourceKey = itemStack.get(ModRegistry.VILLAGER_PROFESSION_DATA_COMPONENT_TYPE.value());
                     Holder.Reference<VillagerProfession> holder = tooltipContext.registries()
