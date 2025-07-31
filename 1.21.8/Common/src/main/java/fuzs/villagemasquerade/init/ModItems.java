@@ -18,6 +18,7 @@ import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.item.equipment.EquipmentAsset;
 import net.minecraft.world.item.equipment.Equippable;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.waypoints.Waypoint;
 
 public class ModItems {
     public static final Holder.Reference<Item> ARMORER_GOGGLES_ITEM = ModRegistry.REGISTRIES.registerItem(
@@ -138,7 +139,8 @@ public class ModItems {
                     ModBlocks.VILLAGER_WALL_HEAD_BLOCK.value(),
                     Direction.DOWN,
                     properties),
-            () -> new Item.Properties().stacksTo(1)
+            () -> Waypoint.addHideAttribute(new Item.Properties())
+                    .stacksTo(1)
                     .equippable(EquipmentSlot.HEAD)
                     .component(DataComponents.NOTE_BLOCK_SOUND, SoundEvents.VILLAGER_AMBIENT.location()));
     public static final Holder.Reference<Item> LEGACY_FARMER_ROBE_ITEM = ModRegistry.REGISTRIES.registerItem(
@@ -179,7 +181,8 @@ public class ModItems {
                     ModBlocks.IRON_GOLEM_WALL_HEAD_BLOCK.value(),
                     Direction.DOWN,
                     properties),
-            () -> new Item.Properties().stacksTo(1)
+            () -> Waypoint.addHideAttribute(new Item.Properties())
+                    .stacksTo(1)
                     .equippable(EquipmentSlot.HEAD)
                     .attributes(createIronGolemAttributes(ArmorType.HELMET)));
     public static final Holder.Reference<Item> IRON_GOLEM_ROBE_ITEM = ModRegistry.REGISTRIES.registerItem(
@@ -195,7 +198,8 @@ public class ModItems {
                     ModBlocks.ILLAGER_WALL_HEAD_BLOCK.value(),
                     Direction.DOWN,
                     properties),
-            () -> new Item.Properties().stacksTo(1)
+            () -> Waypoint.addHideAttribute(new Item.Properties())
+                    .stacksTo(1)
                     .equippable(EquipmentSlot.HEAD)
                     .component(DataComponents.NOTE_BLOCK_SOUND, SoundEvents.PILLAGER_AMBIENT.location()));
     public static final Holder.Reference<Item> EVOKER_ROBE_ITEM = ModRegistry.REGISTRIES.registerItem("evoker_robe",
