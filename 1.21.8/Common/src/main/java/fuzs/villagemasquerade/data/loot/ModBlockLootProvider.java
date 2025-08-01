@@ -19,28 +19,25 @@ public class ModBlockLootProvider extends AbstractLootProvider.Blocks {
 
     @Override
     public void addLootTables() {
+        this.add(ModBlocks.VILLAGER_HEAD_BLOCK.value(), this::createHeadDrop);
+        this.add(ModBlocks.IRON_GOLEM_HEAD_BLOCK.value(), this::createHeadDrop);
+        this.add(ModBlocks.ILLAGER_HEAD_BLOCK.value(), this::createHeadDrop);
+    }
+
+    /**
+     * TODO use method from Puzzles Lib
+     */
+    @Deprecated
+    public LootTable.Builder createHeadDrop(Block block) {
         // explosion condition is not applied on purpose; all vanilla heads are explosion-resistant
-        this.add(ModBlocks.VILLAGER_HEAD_BLOCK.value(),
-                (Block block) -> LootTable.lootTable()
-                        .withPool(LootPool.lootPool()
-                                .setRolls(ConstantValue.exactly(1.0F))
-                                .add(LootItem.lootTableItem(block)
-                                        .apply(CopyComponentsFunction.copyComponents(CopyComponentsFunction.Source.BLOCK_ENTITY)
-                                                .include(DataComponents.NOTE_BLOCK_SOUND)))
-                                .unwrap()));
-        this.add(ModBlocks.IRON_GOLEM_HEAD_BLOCK.value(),
-                (Block block) -> LootTable.lootTable()
-                        .withPool(LootPool.lootPool()
-                                .setRolls(ConstantValue.exactly(1.0F))
-                                .add(LootItem.lootTableItem(block))
-                                .unwrap()));
-        this.add(ModBlocks.ILLAGER_HEAD_BLOCK.value(),
-                (Block block) -> LootTable.lootTable()
-                        .withPool(LootPool.lootPool()
-                                .setRolls(ConstantValue.exactly(1.0F))
-                                .add(LootItem.lootTableItem(block)
-                                        .apply(CopyComponentsFunction.copyComponents(CopyComponentsFunction.Source.BLOCK_ENTITY)
-                                                .include(DataComponents.NOTE_BLOCK_SOUND)))
-                                .unwrap()));
+        return LootTable.lootTable()
+                .withPool(LootPool.lootPool()
+                        .setRolls(ConstantValue.exactly(1.0F))
+                        .add(LootItem.lootTableItem(block)
+                                .apply(CopyComponentsFunction.copyComponents(CopyComponentsFunction.Source.BLOCK_ENTITY)
+                                        .include(DataComponents.CUSTOM_NAME))
+                                .apply(CopyComponentsFunction.copyComponents(CopyComponentsFunction.Source.BLOCK_ENTITY)
+                                        .include(DataComponents.NOTE_BLOCK_SOUND)))
+                        .unwrap());
     }
 }
