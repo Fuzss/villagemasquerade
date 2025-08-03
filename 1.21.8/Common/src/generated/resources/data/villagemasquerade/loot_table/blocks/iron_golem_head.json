@@ -6,6 +6,22 @@
       "entries": [
         {
           "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "minecraft:copy_components",
+              "include": [
+                "minecraft:custom_name"
+              ],
+              "source": "block_entity"
+            },
+            {
+              "function": "minecraft:copy_components",
+              "include": [
+                "minecraft:note_block_sound"
+              ],
+              "source": "block_entity"
+            }
+          ],
           "name": "villagemasquerade:iron_golem_head"
         }
       ],

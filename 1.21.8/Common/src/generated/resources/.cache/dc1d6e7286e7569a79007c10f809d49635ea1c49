@@ -1,4 +1,4 @@
-// 1.21.8	2025-07-18T13:34:46.52341	Block Loot Tables
-8d64aafce488be96805842a471c30e5fea136864 data/villagemasquerade/loot_table/blocks/illager_head.json
-430afe0891ee6f500b03d3b3095a5b5fb18650d1 data/villagemasquerade/loot_table/blocks/iron_golem_head.json
-3d91846f8f83d9349ee792ea00facc78c0d8feea data/villagemasquerade/loot_table/blocks/villager_head.json
+// 1.21.8	2025-08-03T13:18:43.175539	Block Loot Tables
+e7ec88f7932e385057f0e10d2269e548c4b804e8 data/villagemasquerade/loot_table/blocks/illager_head.json
+96252751e6a735b2388f0830de04831dd10b154e data/villagemasquerade/loot_table/blocks/iron_golem_head.json
+0b51751045611fd8f7ec8aa58d19ff1825aa76d8 data/villagemasquerade/loot_table/blocks/villager_head.json

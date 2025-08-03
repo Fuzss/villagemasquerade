@@ -184,6 +184,7 @@ public class ModItems {
             () -> Waypoint.addHideAttribute(new Item.Properties())
                     .stacksTo(1)
                     .equippable(EquipmentSlot.HEAD)
+                    .component(DataComponents.NOTE_BLOCK_SOUND, SoundEvents.IRON_GOLEM_REPAIR.location())
                     .attributes(createIronGolemAttributes(ArmorType.HELMET)));
     public static final Holder.Reference<Item> IRON_GOLEM_ROBE_ITEM = ModRegistry.REGISTRIES.registerItem(
             "iron_golem_chestplate",
