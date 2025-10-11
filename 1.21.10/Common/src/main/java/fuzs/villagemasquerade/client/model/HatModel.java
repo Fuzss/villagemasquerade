@@ -62,6 +62,7 @@ public class HatModel<S extends HumanoidRenderState> extends EntityModel<S> impl
                             .addBox(-4.0F, -8.0F, -4.0F, 8.0F, 10.0F, 6.0F, new CubeDeformation(0.6F)),
                     PartPose.ZERO);
         }
+
         PartDefinition partDefinition2 = partDefinition1.addOrReplaceChild("hat1",
                 CubeListBuilder.create()
                         .texOffs(0, 55)

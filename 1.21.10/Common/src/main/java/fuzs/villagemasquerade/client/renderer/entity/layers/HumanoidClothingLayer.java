@@ -1,63 +1,50 @@
 package fuzs.villagemasquerade.client.renderer.entity.layers;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import fuzs.villagemasquerade.client.model.ClothingModel;
-import fuzs.villagemasquerade.client.model.geom.ModModelLayers;
 import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.SubmitNodeCollector;
+import net.minecraft.client.renderer.entity.ArmorModelSet;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.EquipmentLayerRenderer;
 import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
 import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
+import net.minecraft.client.resources.model.EquipmentClientInfo;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.equipment.Equippable;
 
-public class HumanoidClothingLayer<S extends HumanoidRenderState, M extends HumanoidModel<S>, A extends ClothingModel<S>> extends HumanoidArmorLayer<S, M, A> {
+public abstract class HumanoidClothingLayer<S extends HumanoidRenderState, M extends HumanoidModel<S>, A extends HumanoidModel<S>> extends HumanoidArmorLayer<S, M, A> {
 
-    public HumanoidClothingLayer(RenderLayerParent<S, M> renderer, A model, EquipmentLayerRenderer equipmentRenderer) {
-        super(renderer, model, model, equipmentRenderer);
+    public HumanoidClothingLayer(RenderLayerParent<S, M> renderer, ArmorModelSet<A> modelSet, EquipmentLayerRenderer equipmentRenderer) {
+        super(renderer, modelSet, modelSet, equipmentRenderer);
     }
 
-    public HumanoidClothingLayer(RenderLayerParent<S, M> renderer, A model, A modelBaby, EquipmentLayerRenderer equipmentRenderer) {
-        super(renderer, model, model, modelBaby, modelBaby, equipmentRenderer);
+    public HumanoidClothingLayer(RenderLayerParent<S, M> renderer, ArmorModelSet<A> modelSet, ArmorModelSet<A> babyModelSet, EquipmentLayerRenderer equipmentRenderer) {
+        super(renderer, modelSet, babyModelSet, equipmentRenderer);
     }
 
+    /**
+     * @see HumanoidArmorLayer#renderArmorPiece(PoseStack, SubmitNodeCollector, ItemStack, EquipmentSlot, int,
+     *         HumanoidRenderState)
+     */
     @Override
-    protected void renderArmorPiece(PoseStack poseStack, MultiBufferSource bufferSource, ItemStack armorItem, EquipmentSlot slot, int packedLight, A model) {
-        Equippable equippable = armorItem.get(DataComponents.EQUIPPABLE);
+    protected void renderArmorPiece(PoseStack poseStack, SubmitNodeCollector nodeCollector, ItemStack item, EquipmentSlot slot, int packedLight, S renderState) {
+        Equippable equippable = item.get(DataComponents.EQUIPPABLE);
         if (equippable != null && shouldRender(equippable, slot)) {
-            this.getParentModel().copyPropertiesTo(model);
-            this.setPartVisibility(model, slot);
-            this.equipmentRenderer.renderLayers(ModModelLayers.CLOTHING_LAYER_TYPE,
+            EquipmentClientInfo.LayerType layerType = this.getLayerType(slot);
+            A model = this.getArmorModel(renderState, slot);
+            this.equipmentRenderer.renderLayers(layerType,
                     equippable.assetId().orElseThrow(),
                     model,
-                    armorItem,
+                    renderState,
+                    item,
                     poseStack,
-                    bufferSource,
-                    packedLight);
+                    nodeCollector,
+                    packedLight,
+                    renderState.outlineColor);
         }
     }
 
-    @Override
-    protected void setPartVisibility(A model, EquipmentSlot slot) {
-        model.setAllVisible(false);
-        switch (slot) {
-            case HEAD -> {
-                model.head.visible = true;
-                model.hat.visible = true;
-                model.hatRim.visible = true;
-            }
-            case CHEST -> {
-                model.body.visible = true;
-                model.rightArm.visible = true;
-                model.leftArm.visible = true;
-            }
-            case LEGS, FEET -> {
-                model.rightLeg.visible = true;
-                model.leftLeg.visible = true;
-            }
-        }
-    }
+    protected abstract EquipmentClientInfo.LayerType getLayerType(EquipmentSlot slot);
 }

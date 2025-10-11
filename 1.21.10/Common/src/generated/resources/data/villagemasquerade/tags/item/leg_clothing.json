@@ -1,17 +1,17 @@
 {
   "values": [
+    "villagemasquerade:evoker_leggings",
     "villagemasquerade:fisherman_leggings",
-    "villagemasquerade:nitwit_leggings",
+    "villagemasquerade:iron_golem_leggings",
     "villagemasquerade:legacy_farmer_leggings",
     "villagemasquerade:legacy_librarian_leggings",
     "villagemasquerade:legacy_nitwit_leggings",
     "villagemasquerade:legacy_priest_leggings",
-    "villagemasquerade:wandering_trader_leggings",
-    "villagemasquerade:iron_golem_leggings",
-    "villagemasquerade:evoker_leggings",
+    "villagemasquerade:nitwit_leggings",
     "villagemasquerade:pillager_leggings",
+    "villagemasquerade:santa_leggings",
     "villagemasquerade:vindicator_leggings",
-    "villagemasquerade:witch_leggings",
-    "villagemasquerade:santa_leggings"
+    "villagemasquerade:wandering_trader_leggings",
+    "villagemasquerade:witch_leggings"
   ]
 }

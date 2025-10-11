@@ -20,11 +20,14 @@ public class ModEntityTagsProvider extends AbstractTagProvider<EntityType<?>> {
                         EntityType.BOGGED,
                         EntityType.DROWNED,
                         EntityType.HUSK,
+                        EntityType.PIGLIN,
+                        EntityType.PIGLIN_BRUTE,
                         EntityType.PLAYER,
                         EntityType.STRAY,
                         EntityType.SKELETON,
                         EntityType.WITHER_SKELETON,
-                        EntityType.ZOMBIE)
+                        EntityType.ZOMBIE,
+                        EntityType.ZOMBIFIED_PIGLIN)
                 .addOptional("strawstatues:straw_statue");
     }
 }

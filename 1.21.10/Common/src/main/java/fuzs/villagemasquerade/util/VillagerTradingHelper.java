@@ -38,7 +38,6 @@ public class VillagerTradingHelper {
     private static EquipmentSlot getArmorEquipmentSlot(Item item) {
         if (item.components().has(DataComponents.EQUIPPABLE)) {
             EquipmentSlot equipmentSlot = item.components().get(DataComponents.EQUIPPABLE).slot();
-
             if (equipmentSlot.getType() == EquipmentSlot.Type.HUMANOID_ARMOR) {
                 return equipmentSlot;
             }
@@ -70,12 +69,10 @@ public class VillagerTradingHelper {
 
     private static int getEquippedArmorForProfession(Player player, VillagerData villagerData) {
         int equippedArmorForProfession = 0;
-
         for (EquipmentSlot equipmentSlot : EquipmentSlotGroup.ARMOR) {
             if (equipmentSlot.getType() == EquipmentSlot.Type.HUMANOID_ARMOR) {
                 ItemStack itemStack = player.getItemBySlot(equipmentSlot);
                 ResourceKey<VillagerProfession> resourceKey = itemStack.get(ModRegistry.VILLAGER_PROFESSION_DATA_COMPONENT_TYPE.value());
-
                 if (resourceKey != null && villagerData.profession().is(resourceKey)) {
                     equippedArmorForProfession++;
                 }

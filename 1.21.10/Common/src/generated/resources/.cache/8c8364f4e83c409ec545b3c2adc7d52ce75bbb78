@@ -1,14 +1,14 @@
-// 1.21.8	2025-08-03T13:18:43.17684	Tags for minecraft:item mod id vanilla
-a32984c1528b055d56d8a96cfbd7e6cd3823f16e data/minecraft/tags/item/noteblock_top_instruments.json
-a32984c1528b055d56d8a96cfbd7e6cd3823f16e data/minecraft/tags/item/skulls.json
-968c0c951039fcae669ee49dcd633f077ed1cab0 data/villagemasquerade/tags/item/chest_clothing.json
-c4d6079ac7931f75bab62872914c82f9e19f3b6f data/villagemasquerade/tags/item/clothing.json
+// 1.21.10	2025-10-11T19:19:41.253863	Tags for minecraft:item mod id vanilla
+9cfd0ccd3387175221037bcc161a01656fa0e498 data/minecraft/tags/item/noteblock_top_instruments.json
+9cfd0ccd3387175221037bcc161a01656fa0e498 data/minecraft/tags/item/skulls.json
+7d63b5ee35e4c584fd27adec2de398780562d9e4 data/villagemasquerade/tags/item/chest_clothing.json
+a06c8e8a1223f8f08bdf5723ee48c11565a54e05 data/villagemasquerade/tags/item/clothing.json
 14c0db067e38685bbdd95583e8959cc76e38ca00 data/villagemasquerade/tags/item/enemy_clothing.json
-3ec4e2b18f035be8fc8e573c39e8dfa10f44a603 data/villagemasquerade/tags/item/evoker_clothing.json
-663958bc3e5a601f41264f9e016c69740ee914f1 data/villagemasquerade/tags/item/head_clothing.json
-a2bfe81a112d540300f0dfa14fcd399bd2201ded data/villagemasquerade/tags/item/leg_clothing.json
+a9ee9c95a3c20d9ea7903390ede309f57e4b3397 data/villagemasquerade/tags/item/evoker_clothing.json
+0f88e57630487a323b50174effb83a3136595e43 data/villagemasquerade/tags/item/head_clothing.json
+aaeeb1b3a751e35c53830265dc702641de279dde data/villagemasquerade/tags/item/leg_clothing.json
 0192a373a830830378f982b54888cfb901919c5a data/villagemasquerade/tags/item/pillager_clothing.json
-7ebd23266a5e1c2a8e77dc9b9550f6a097f14f82 data/villagemasquerade/tags/item/santa_clothing.json
+2599e1304fe831468cef4c50a5e39e18c38f6464 data/villagemasquerade/tags/item/santa_clothing.json
 9378c6783a9a9a100e764823ed4d8aa3fcb6c46d data/villagemasquerade/tags/item/vindicator_clothing.json
-5f50e4b3e11e68a5e3e8bdad883e2c1712c726d9 data/villagemasquerade/tags/item/wandering_trader_clothing.json
-075772ee19d5c44bcedaa4c5710d6ad7a455fcba data/villagemasquerade/tags/item/witch_clothing.json
+08ccfacee16eb1779d252ebad63f217e0103e06b data/villagemasquerade/tags/item/wandering_trader_clothing.json
+40666e3fa47441d96a2a6e2dbd253f325738271d data/villagemasquerade/tags/item/witch_clothing.json

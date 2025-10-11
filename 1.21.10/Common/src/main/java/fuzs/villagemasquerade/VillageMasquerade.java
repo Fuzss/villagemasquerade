@@ -5,8 +5,8 @@ import fuzs.puzzleslib.api.core.v1.context.VillagerTradesContext;
 import fuzs.puzzleslib.api.core.v1.utility.ResourceLocationHelper;
 import fuzs.puzzleslib.api.event.v1.AddBlockEntityTypeBlocksCallback;
 import fuzs.puzzleslib.api.event.v1.entity.ServerEntityLevelEvents;
+import fuzs.puzzleslib.api.event.v1.entity.living.CalculateLivingVisibilityCallback;
 import fuzs.puzzleslib.api.event.v1.entity.living.LivingDropsCallback;
-import fuzs.puzzleslib.api.event.v1.entity.living.LivingVisibilityCallback;
 import fuzs.puzzleslib.api.event.v1.entity.living.MobEffectEvents;
 import fuzs.puzzleslib.api.event.v1.server.LootTableLoadCallback;
 import fuzs.villagemasquerade.handler.ClothingEquipmentHandler;
@@ -44,7 +44,7 @@ public class VillageMasquerade implements ModConstructor {
         LootTableLoadCallback.EVENT.register(ModLootTables::onLootTableLoad);
         ServerEntityLevelEvents.LOAD.register(ClothingEquipmentHandler::onEntityLoad);
         MobEffectEvents.AFFECTS.register(ClothingEquipmentHandler::onMobEffectAffects);
-        LivingVisibilityCallback.EVENT.register(ClothingEquipmentHandler::onLivingVisibility);
+        CalculateLivingVisibilityCallback.EVENT.register(ClothingEquipmentHandler::onCalculateLivingVisibility);
     }
 
     @Override

@@ -40,13 +40,16 @@ public class ClothingEquipmentHandler {
     };
 
     public static EventResult onLivingDrops(LivingEntity livingEntity, DamageSource damageSource, Collection<ItemEntity> itemDrops, boolean recentlyHit) {
-        if (damageSource.getEntity() instanceof Creeper creeper && creeper.canDropMobsSkull()) {
-            Holder<Item> holder = getHeadItem(livingEntity);
-            if (holder != null) {
-                livingEntity.spawnAtLocation((ServerLevel) livingEntity.level(), new ItemStack(holder));
-                creeper.increaseDroppedSkulls();
+        if (livingEntity.level() instanceof ServerLevel serverLevel && livingEntity.shouldDropLoot(serverLevel)) {
+            if (damageSource.getEntity() instanceof Creeper creeper && creeper.isPowered() && !creeper.droppedSkulls) {
+                Holder<Item> holder = getHeadItem(livingEntity);
+                if (holder != null) {
+                    livingEntity.spawnAtLocation(serverLevel, new ItemStack(holder));
+                    creeper.droppedSkulls = true;
+                }
             }
         }
+
         return EventResult.PASS;
     }
 
@@ -84,7 +87,7 @@ public class ClothingEquipmentHandler {
         return EventResult.PASS;
     }
 
-    public static void onLivingVisibility(LivingEntity livingEntity, @Nullable Entity lookingEntity, MutableDouble visibilityPercentage) {
+    public static void onCalculateLivingVisibility(LivingEntity livingEntity, @Nullable Entity lookingEntity, MutableDouble visibilityPercentage) {
         if (lookingEntity instanceof Enemy && lookingEntity.level().isDarkOutside() && isWearingOutfit(livingEntity,
                 ModTags.WANDERING_TRADER_CLOTHING_ITEM_TAG)) {
             visibilityPercentage.mapDouble((double value) -> value * 0.25);
