@@ -1,0 +1,17 @@
+{
+  "values": [
+    "minecraft:armor_stand",
+    "minecraft:bogged",
+    "minecraft:drowned",
+    "minecraft:husk",
+    "minecraft:player",
+    "minecraft:stray",
+    "minecraft:skeleton",
+    "minecraft:wither_skeleton",
+    "minecraft:zombie",
+    {
+      "id": "strawstatues:straw_statue",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "villagemasquerade:legacy_farmer_robe"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "villagemasquerade:legacy_librarian_robe"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "villagemasquerade:legacy_priest_robe"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "villagemasquerade:legacy_nitwit_robe"
+        },
+        {
+          "type": "minecraft:empty",
+          "weight": 4
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "villagemasquerade:legacy_farmer_leggings"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "villagemasquerade:legacy_librarian_leggings"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "villagemasquerade:legacy_priest_leggings"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "villagemasquerade:legacy_nitwit_leggings"
+        },
+        {
+          "type": "minecraft:empty",
+          "weight": 4
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "villagemasquerade:inject/chests/village/village_snowy_house"
+}
