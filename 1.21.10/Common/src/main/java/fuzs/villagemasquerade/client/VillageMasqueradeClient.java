@@ -19,10 +19,12 @@ import fuzs.villagemasquerade.init.ModBlocks;
 import fuzs.villagemasquerade.init.ModRegistry;
 import fuzs.villagemasquerade.init.ModTags;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.model.ArmorStandArmorModel;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.SkullModel;
 import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.model.geom.ModelLayerLocation;
+import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshTransformer;
 import net.minecraft.client.renderer.SubmitNodeCollector;
@@ -44,6 +46,7 @@ import net.minecraft.world.item.TooltipFlag;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Consumer;
+import java.util.function.Function;
 
 public class VillageMasqueradeClient implements ClientModConstructor {
     public static final String VILLAGER_CLOTHING_DESCRIPTION_KEY = ResourceKeyHelper.getTranslationKey(Registries.ITEM,
@@ -84,6 +87,17 @@ public class VillageMasqueradeClient implements ClientModConstructor {
                         ModModelLayers.WITHER_SKELETON_SANTA_HAT,
                         ModModelLayers.WITHER_SKELETON_BABY_SANTA_HAT,
                         context);
+            } else if (entityRenderer instanceof ArmorStandRenderer armorStandRenderer) {
+                addHumanoidLayers(entityType,
+                        armorStandRenderer,
+                        ModModelLayers.ARMOR_STAND_CLOTHING,
+                        ModModelLayers.ARMOR_STAND_SMALL_CLOTHING,
+                        ModModelLayers.HUMANOID_WITCH_HAT,
+                        ModModelLayers.HUMANOID_BABY_WITCH_HAT,
+                        ModModelLayers.HUMANOID_SANTA_HAT,
+                        ModModelLayers.HUMANOID_BABY_SANTA_HAT,
+                        ArmorStandArmorModel::new,
+                        context);
             } else if (entityRenderer.getModel() instanceof HumanoidModel<?>) {
                 addHumanoidLayers(entityType,
                         (LivingEntityRenderer<?, HumanoidRenderState, HumanoidModel<HumanoidRenderState>>) entityRenderer,
@@ -99,9 +113,22 @@ public class VillageMasqueradeClient implements ClientModConstructor {
     }
 
     private static <S extends HumanoidRenderState, M extends HumanoidModel<S>> void addHumanoidLayers(EntityType<?> entityType, LivingEntityRenderer<?, S, M> entityRenderer, ArmorModelSet<ModelLayerLocation> clothingLocation, ArmorModelSet<ModelLayerLocation> clothingBabyLocation, ModelLayerLocation witchHatLocation, ModelLayerLocation witchHatBabyLocation, ModelLayerLocation santaHatLocation, ModelLayerLocation santaHatBabyLocation, EntityRendererProvider.Context context) {
+        addHumanoidLayers(entityType,
+                entityRenderer,
+                clothingLocation,
+                clothingBabyLocation,
+                witchHatLocation,
+                witchHatBabyLocation,
+                santaHatLocation,
+                santaHatBabyLocation,
+                HumanoidModel::new,
+                context);
+    }
+
+    private static <S extends HumanoidRenderState, M extends HumanoidModel<S>> void addHumanoidLayers(EntityType<?> entityType, LivingEntityRenderer<?, S, M> entityRenderer, ArmorModelSet<ModelLayerLocation> clothingLocation, ArmorModelSet<ModelLayerLocation> clothingBabyLocation, ModelLayerLocation witchHatLocation, ModelLayerLocation witchHatBabyLocation, ModelLayerLocation santaHatLocation, ModelLayerLocation santaHatBabyLocation, Function<ModelPart, HumanoidModel<S>> baker, EntityRendererProvider.Context context) {
         entityRenderer.addLayer(new HumanoidClothingLayer<>(entityRenderer,
-                ArmorModelSet.bake(clothingLocation, context.getModelSet(), ClothingModel::new),
-                ArmorModelSet.bake(clothingBabyLocation, context.getModelSet(), ClothingModel::new),
+                ArmorModelSet.bake(clothingLocation, context.getModelSet(), baker),
+                ArmorModelSet.bake(clothingBabyLocation, context.getModelSet(), baker),
                 context.getEquipmentRenderer()) {
             @Override
             public void submit(PoseStack poseStack, SubmitNodeCollector nodeCollector, int packedLight, S renderState, float yRot, float xRot) {
@@ -185,6 +212,11 @@ public class VillageMasqueradeClient implements ClientModConstructor {
         context.registerLayerDefinition(ModModelLayers.HUMANOID_SANTA_HAT, HatModel::createSantaHatLayer);
         context.registerLayerDefinition(ModModelLayers.HUMANOID_BABY_SANTA_HAT,
                 () -> HatModel.createSantaHatLayer().apply(HumanoidModel.BABY_TRANSFORMER));
+        context.registerArmorDefinition(ModModelLayers.ARMOR_STAND_CLOTHING, ClothingModel.createArmorLayerSet());
+        context.registerArmorDefinition(ModModelLayers.ARMOR_STAND_SMALL_CLOTHING,
+                ClothingModel.createArmorLayerSet().map((LayerDefinition layerDefinition) -> {
+                    return layerDefinition.apply(HumanoidModel.BABY_TRANSFORMER);
+                }));
         context.registerArmorDefinition(ModModelLayers.HUSK_CLOTHING,
                 ClothingModel.createArmorLayerSet().map((LayerDefinition layerDefinition) -> {
                     return layerDefinition.apply(HUSK_TRANSFORMER);

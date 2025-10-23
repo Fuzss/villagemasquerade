@@ -34,6 +34,10 @@ public class ModModelLayers {
     public static final ModelLayerLocation HUMANOID_SANTA_HAT = MODEL_LAYERS.registerModelLayer("humanoid/santa_hat");
     public static final ModelLayerLocation HUMANOID_BABY_SANTA_HAT = MODEL_LAYERS.registerModelLayer(
             "humanoid_baby/santa_hat");
+    public static final ArmorModelSet<ModelLayerLocation> ARMOR_STAND_CLOTHING = MODEL_LAYERS.registerArmorSet(
+            "armor_stand/clothing");
+    public static final ArmorModelSet<ModelLayerLocation> ARMOR_STAND_SMALL_CLOTHING = MODEL_LAYERS.registerArmorSet(
+            "armor_stand_small/clothing");
     public static final ArmorModelSet<ModelLayerLocation> HUSK_CLOTHING = MODEL_LAYERS.registerArmorSet("husk/clothing");
     public static final ArmorModelSet<ModelLayerLocation> HUSK_BABY_CLOTHING = MODEL_LAYERS.registerArmorSet(
             "husk_baby/clothing");

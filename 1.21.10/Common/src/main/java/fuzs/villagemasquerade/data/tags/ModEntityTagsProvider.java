@@ -27,7 +27,6 @@ public class ModEntityTagsProvider extends AbstractTagProvider<EntityType<?>> {
                         EntityType.SKELETON,
                         EntityType.WITHER_SKELETON,
                         EntityType.ZOMBIE,
-                        EntityType.ZOMBIFIED_PIGLIN)
-                .addOptional("strawstatues:straw_statue");
+                        EntityType.ZOMBIFIED_PIGLIN);
     }
 }

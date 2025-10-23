@@ -1,23 +1,15 @@
 package fuzs.villagemasquerade.client.model;
 
 import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.client.renderer.entity.ArmorModelSet;
-import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
 import net.minecraft.util.Mth;
 
 import java.util.Set;
 import java.util.function.Function;
 
-public class ClothingModel<S extends HumanoidRenderState> extends HumanoidModel<S> {
-    public final ModelPart hatRim;
-
-    public ClothingModel(ModelPart root) {
-        super(root);
-        this.hatRim = this.getHead().getChild("hat_rim");
-    }
+public class ClothingModel {
 
     public static ArmorModelSet<LayerDefinition> createArmorLayerSet() {
         return createArmorMeshSet(new CubeDeformation(0.25F)).map((MeshDefinition meshDefinition) -> {
@@ -30,7 +22,7 @@ public class ClothingModel<S extends HumanoidRenderState> extends HumanoidModel<
     }
 
     public static MeshDefinition createMesh(CubeDeformation cubeDeformation) {
-        MeshDefinition meshDefinition = createMesh(cubeDeformation, 0.0F);
+        MeshDefinition meshDefinition = HumanoidModel.createMesh(cubeDeformation, 0.0F);
         PartDefinition partDefinition = meshDefinition.getRoot();
         partDefinition.getChild("head")
                 .addOrReplaceChild("hat_rim",
@@ -54,11 +46,5 @@ public class ClothingModel<S extends HumanoidRenderState> extends HumanoidModel<
         MeshDefinition meshDefinition4 = meshCreator.apply(cubeDeformation);
         meshDefinition4.getRoot().clearRecursively();
         return new ArmorModelSet<>(meshDefinition, meshDefinition2, meshDefinition3, meshDefinition4);
-    }
-
-    @Override
-    public void setAllVisible(boolean visible) {
-        super.setAllVisible(visible);
-        this.hatRim.visible = visible;
     }
 }
