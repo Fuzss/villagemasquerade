@@ -1,0 +1,4 @@
+// 1.21.10	2025-10-11T19:19:41.251681	Block Loot Tables
+f8ef7268024373d72650a0cc22f7e5105893b46f data/villagemasquerade/loot_table/blocks/illager_head.json
+f91db64046d331e2a9490bb06757e3158e75888e data/villagemasquerade/loot_table/blocks/iron_golem_head.json
+f7c6e35e7eb7983e4c51adfa5ce814301e8432e0 data/villagemasquerade/loot_table/blocks/villager_head.json

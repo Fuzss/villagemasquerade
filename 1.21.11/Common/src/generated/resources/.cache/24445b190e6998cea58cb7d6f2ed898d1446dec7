@@ -1,0 +1,6 @@
+// 1.21.10	2025-10-11T19:19:41.25577	Mod Entity Loot Provider
+d55f8ec1f1471a0b54ab3d5a06e010ac26c52931 data/villagemasquerade/loot_table/inject/entities/evoker.json
+6658c42c8a10b7ed3b1b6251243941e7672fb95e data/villagemasquerade/loot_table/inject/entities/iron_golem.json
+61ac28099b4f654c5fea7e64a6eda54f983cfa74 data/villagemasquerade/loot_table/inject/entities/pillager.json
+10cc293590f015d3c37333e702b37c67259a391c data/villagemasquerade/loot_table/inject/entities/vindicator.json
+b8c40cd835611f1cc89ed887288d74e8ee5bb7c6 data/villagemasquerade/loot_table/inject/entities/witch.json

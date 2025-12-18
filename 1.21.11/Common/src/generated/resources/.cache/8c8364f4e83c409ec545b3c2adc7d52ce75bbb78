@@ -1,0 +1,14 @@
+// 1.21.10	2025-10-11T19:19:41.253863	Tags for minecraft:item mod id vanilla
+9cfd0ccd3387175221037bcc161a01656fa0e498 data/minecraft/tags/item/noteblock_top_instruments.json
+9cfd0ccd3387175221037bcc161a01656fa0e498 data/minecraft/tags/item/skulls.json
+7d63b5ee35e4c584fd27adec2de398780562d9e4 data/villagemasquerade/tags/item/chest_clothing.json
+a06c8e8a1223f8f08bdf5723ee48c11565a54e05 data/villagemasquerade/tags/item/clothing.json
+14c0db067e38685bbdd95583e8959cc76e38ca00 data/villagemasquerade/tags/item/enemy_clothing.json
+a9ee9c95a3c20d9ea7903390ede309f57e4b3397 data/villagemasquerade/tags/item/evoker_clothing.json
+0f88e57630487a323b50174effb83a3136595e43 data/villagemasquerade/tags/item/head_clothing.json
+aaeeb1b3a751e35c53830265dc702641de279dde data/villagemasquerade/tags/item/leg_clothing.json
+0192a373a830830378f982b54888cfb901919c5a data/villagemasquerade/tags/item/pillager_clothing.json
+2599e1304fe831468cef4c50a5e39e18c38f6464 data/villagemasquerade/tags/item/santa_clothing.json
+9378c6783a9a9a100e764823ed4d8aa3fcb6c46d data/villagemasquerade/tags/item/vindicator_clothing.json
+08ccfacee16eb1779d252ebad63f217e0103e06b data/villagemasquerade/tags/item/wandering_trader_clothing.json
+40666e3fa47441d96a2a6e2dbd253f325738271d data/villagemasquerade/tags/item/witch_clothing.json
