@@ -1,0 +1,28 @@
+{
+  "entries": [
+    {
+      "enum": "net/minecraft/client/resources/model/EquipmentClientInfo$LayerType",
+      "name": "VILLAGEMASQUERADE_CLOTHING",
+      "constructor": "(Ljava/lang/String;)V",
+      "parameters": [
+        "villagemasquerade:clothing"
+      ]
+    },
+    {
+      "enum": "net/minecraft/client/resources/model/EquipmentClientInfo$LayerType",
+      "name": "VILLAGEMASQUERADE_WITCH_HAT",
+      "constructor": "(Ljava/lang/String;)V",
+      "parameters": [
+        "villagemasquerade:witch_hat"
+      ]
+    },
+    {
+      "enum": "net/minecraft/client/resources/model/EquipmentClientInfo$LayerType",
+      "name": "VILLAGEMASQUERADE_SANTA_HAT",
+      "constructor": "(Ljava/lang/String;)V",
+      "parameters": [
+        "villagemasquerade:santa_hat"
+      ]
+    }
+  ]
+}

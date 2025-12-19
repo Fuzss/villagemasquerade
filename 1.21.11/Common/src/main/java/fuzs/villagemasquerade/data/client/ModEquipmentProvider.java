@@ -3,7 +3,7 @@ package fuzs.villagemasquerade.data.client;
 import fuzs.puzzleslib.api.client.data.v2.AbstractEquipmentProvider;
 import fuzs.puzzleslib.api.data.v2.core.DataProviderContext;
 import fuzs.villagemasquerade.VillageMasquerade;
-import fuzs.villagemasquerade.client.model.geom.ModModelLayers;
+import fuzs.villagemasquerade.client.init.ModEnumConstants;
 import fuzs.villagemasquerade.init.ModEquipmentAssets;
 import net.minecraft.client.resources.model.EquipmentClientInfo;
 import net.minecraft.resources.ResourceKey;
@@ -44,14 +44,14 @@ public class ModEquipmentProvider extends AbstractEquipmentProvider {
         this.addClothingLayer(equipmentAssetConsumer, ModEquipmentAssets.VINDICATOR_EQUIPMENT_ASSET);
         this.addClothingLayer(equipmentAssetConsumer, ModEquipmentAssets.WITCH_EQUIPMENT_ASSET);
         equipmentAssetConsumer.accept(ModEquipmentAssets.WITCH_HAT_EQUIPMENT_ASSET,
-                simple(ModModelLayers.WITCH_HAT_LAYER_TYPE, VillageMasquerade.id("hat")));
+                simple(ModEnumConstants.WITCH_HAT_LAYER_TYPE, VillageMasquerade.id("hat")));
         this.addClothingLayer(equipmentAssetConsumer, ModEquipmentAssets.SANTA_EQUIPMENT_ASSET);
         equipmentAssetConsumer.accept(ModEquipmentAssets.SANTA_HAT_EQUIPMENT_ASSET,
-                simple(ModModelLayers.SANTA_HAT_LAYER_TYPE, VillageMasquerade.id("hat")));
+                simple(ModEnumConstants.SANTA_HAT_LAYER_TYPE, VillageMasquerade.id("hat")));
     }
 
     public final void addClothingLayer(BiConsumer<ResourceKey<EquipmentAsset>, EquipmentClientInfo> equipmentAssetConsumer, ResourceKey<EquipmentAsset> resourceKey) {
         equipmentAssetConsumer.accept(resourceKey,
-                simple(ModModelLayers.CLOTHING_LAYER_TYPE, VillageMasquerade.id(resourceKey.identifier().getPath())));
+                simple(ModEnumConstants.CLOTHING_LAYER_TYPE, VillageMasquerade.id(resourceKey.identifier().getPath())));
     }
 }

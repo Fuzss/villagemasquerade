@@ -9,6 +9,5 @@ dependencies {
 multiloader {
     mixins {
         mixin("VillagerMixin")
-        clientMixin("EquipmentClientInfo\$LayerTypeMixin")
     }
 }
