@@ -18,15 +18,15 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.goal.WrappedGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.targeting.TargetingConditions;
-import net.minecraft.world.entity.animal.IronGolem;
+import net.minecraft.world.entity.animal.golem.IronGolem;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.Creeper;
 import net.minecraft.world.entity.monster.Enemy;
-import net.minecraft.world.entity.npc.Villager;
+import net.minecraft.world.entity.npc.villager.Villager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.Nullable;
 
 import java.util.Collection;
 import java.util.List;
@@ -90,7 +90,7 @@ public class ClothingEquipmentHandler {
     public static void onCalculateLivingVisibility(LivingEntity livingEntity, @Nullable Entity lookingEntity, MutableDouble visibilityPercentage) {
         if (lookingEntity instanceof Enemy && lookingEntity.level().isDarkOutside() && isWearingOutfit(livingEntity,
                 ModTags.WANDERING_TRADER_CLOTHING_ITEM_TAG)) {
-            visibilityPercentage.mapDouble((double value) -> value * 0.25);
+            visibilityPercentage.mapAsDouble((double value) -> value * 0.25);
         }
     }
 

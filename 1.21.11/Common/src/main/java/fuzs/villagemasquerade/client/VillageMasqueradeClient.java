@@ -19,14 +19,14 @@ import fuzs.villagemasquerade.init.ModBlocks;
 import fuzs.villagemasquerade.init.ModRegistry;
 import fuzs.villagemasquerade.init.ModTags;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.model.ArmorStandArmorModel;
 import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.model.SkullModel;
 import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshTransformer;
+import net.minecraft.client.model.object.armorstand.ArmorStandArmorModel;
+import net.minecraft.client.model.object.skull.SkullModel;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.*;
 import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
@@ -38,12 +38,12 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.npc.VillagerProfession;
+import net.minecraft.world.entity.npc.villager.VillagerProfession;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.Nullable;
 
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -201,9 +201,9 @@ public class VillageMasqueradeClient implements ClientModConstructor {
                 () -> LayerDefinition.create(VillagerHeadModel.createVillagerHeadModel(), 128, 128));
         context.registerLayerDefinition(ModModelLayers.ILLAGER_HEAD,
                 () -> LayerDefinition.create(VillagerHeadModel.createVillagerHeadModel(), 64, 64));
-        context.registerArmorDefinition(ModModelLayers.HUMANOID_CLOTHING, ClothingModel.createArmorLayerSet());
+        context.registerArmorDefinition(ModModelLayers.HUMANOID_CLOTHING, ClothingModel::createArmorLayerSet);
         context.registerArmorDefinition(ModModelLayers.HUMANOID_BABY_CLOTHING,
-                ClothingModel.createArmorLayerSet().map((LayerDefinition layerDefinition) -> {
+                () -> ClothingModel.createArmorLayerSet().map((LayerDefinition layerDefinition) -> {
                     return layerDefinition.apply(HumanoidModel.BABY_TRANSFORMER);
                 }));
         context.registerLayerDefinition(ModModelLayers.HUMANOID_WITCH_HAT, HatModel::createWitchHatLayer);
@@ -212,17 +212,17 @@ public class VillageMasqueradeClient implements ClientModConstructor {
         context.registerLayerDefinition(ModModelLayers.HUMANOID_SANTA_HAT, HatModel::createSantaHatLayer);
         context.registerLayerDefinition(ModModelLayers.HUMANOID_BABY_SANTA_HAT,
                 () -> HatModel.createSantaHatLayer().apply(HumanoidModel.BABY_TRANSFORMER));
-        context.registerArmorDefinition(ModModelLayers.ARMOR_STAND_CLOTHING, ClothingModel.createArmorLayerSet());
+        context.registerArmorDefinition(ModModelLayers.ARMOR_STAND_CLOTHING, ClothingModel::createArmorLayerSet);
         context.registerArmorDefinition(ModModelLayers.ARMOR_STAND_SMALL_CLOTHING,
-                ClothingModel.createArmorLayerSet().map((LayerDefinition layerDefinition) -> {
+                () -> ClothingModel.createArmorLayerSet().map((LayerDefinition layerDefinition) -> {
                     return layerDefinition.apply(HumanoidModel.BABY_TRANSFORMER);
                 }));
         context.registerArmorDefinition(ModModelLayers.HUSK_CLOTHING,
-                ClothingModel.createArmorLayerSet().map((LayerDefinition layerDefinition) -> {
+                () -> ClothingModel.createArmorLayerSet().map((LayerDefinition layerDefinition) -> {
                     return layerDefinition.apply(HUSK_TRANSFORMER);
                 }));
         context.registerArmorDefinition(ModModelLayers.HUSK_BABY_CLOTHING,
-                ClothingModel.createArmorLayerSet().map((LayerDefinition layerDefinition) -> {
+                () -> ClothingModel.createArmorLayerSet().map((LayerDefinition layerDefinition) -> {
                     return layerDefinition.apply(HumanoidModel.BABY_TRANSFORMER).apply(HUSK_TRANSFORMER);
                 }));
         context.registerLayerDefinition(ModModelLayers.HUSK_WITCH_HAT,
@@ -234,11 +234,11 @@ public class VillageMasqueradeClient implements ClientModConstructor {
         context.registerLayerDefinition(ModModelLayers.HUSK_BABY_SANTA_HAT,
                 () -> HatModel.createSantaHatLayer().apply(HumanoidModel.BABY_TRANSFORMER).apply(HUSK_TRANSFORMER));
         context.registerArmorDefinition(ModModelLayers.WITHER_SKELETON_CLOTHING,
-                ClothingModel.createArmorLayerSet().map((LayerDefinition layerDefinition) -> {
+                () -> ClothingModel.createArmorLayerSet().map((LayerDefinition layerDefinition) -> {
                     return layerDefinition.apply(WITHER_SKELETON_TRANSFORMER);
                 }));
         context.registerArmorDefinition(ModModelLayers.WITHER_SKELETON_BABY_CLOTHING,
-                ClothingModel.createArmorLayerSet().map((LayerDefinition layerDefinition) -> {
+                () -> ClothingModel.createArmorLayerSet().map((LayerDefinition layerDefinition) -> {
                     return layerDefinition.apply(HumanoidModel.BABY_TRANSFORMER).apply(WITHER_SKELETON_TRANSFORMER);
                 }));
         context.registerLayerDefinition(ModModelLayers.WITHER_SKELETON_WITCH_HAT,

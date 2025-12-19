@@ -1,7 +1,7 @@
 package fuzs.villagemasquerade.init;
 
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.entity.npc.VillagerProfession;
+import net.minecraft.world.entity.npc.villager.VillagerProfession;
 import net.minecraft.world.item.equipment.EquipmentAsset;
 import net.minecraft.world.item.equipment.EquipmentAssets;
 
@@ -73,6 +73,6 @@ public class ModEquipmentAssets {
     }
 
     private static ResourceKey<EquipmentAsset> createEquipmentAssetKey(ResourceKey<VillagerProfession> resourceKey) {
-        return ModRegistry.REGISTRIES.makeResourceKey(EquipmentAssets.ROOT_ID, resourceKey.location().getPath());
+        return ModRegistry.REGISTRIES.makeResourceKey(EquipmentAssets.ROOT_ID, resourceKey.identifier().getPath());
     }
 }

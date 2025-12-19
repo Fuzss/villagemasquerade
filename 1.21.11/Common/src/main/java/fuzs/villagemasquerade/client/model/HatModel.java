@@ -2,10 +2,10 @@ package fuzs.villagemasquerade.client.model;
 
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.HeadedModel;
-import net.minecraft.client.model.WitchModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.client.model.monster.witch.WitchModel;
 import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
 
 public class HatModel<S extends HumanoidRenderState> extends EntityModel<S> implements HeadedModel {

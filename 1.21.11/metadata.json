@@ -1,0 +1,62 @@
+{
+    "mod": {
+        "id": "villagemasquerade",
+        "group": "fuzs.villagemasquerade",
+        "name": "Village Masquerade",
+        "version": "21.11.0",
+        "authors": [
+            "EnderPreston",
+            "Fuzs"
+        ],
+        "description": "Dress like a villager, trade like a pro, and look fabulous doing it.",
+        "license": "MPL-2.0"
+    },
+    "dependencies": [
+        {
+            "name": "fabricapi",
+            "type": "required",
+            "platforms": [
+                "fabric"
+            ]
+        },
+        {
+            "name": "forgeconfigapiport",
+            "type": "required",
+            "platforms": [
+                "fabric"
+            ]
+        },
+        {
+            "name": "puzzleslib",
+            "type": "required",
+            "platforms": [
+                "fabric",
+                "neoforge"
+            ]
+        }
+    ],
+    "links": [
+        {
+            "name": "github",
+            "slug": "villagemasquerade"
+        },
+        {
+            "name": "curseforge",
+            "slug": "village-masquerade",
+            "id": "1370923"
+        },
+        {
+            "name": "modrinth",
+            "slug": "village-masquerade",
+            "id": "leFnAa7O"
+        }
+    ],
+    "environments": {
+        "client": "required",
+        "server": "required"
+    },
+    "platforms": [
+        "fabric",
+        "neoforge"
+    ]
+}

@@ -2,7 +2,6 @@ package fuzs.villagemasquerade;
 
 import fuzs.puzzleslib.api.core.v1.ModConstructor;
 import fuzs.puzzleslib.api.core.v1.context.VillagerTradesContext;
-import fuzs.puzzleslib.api.core.v1.utility.ResourceLocationHelper;
 import fuzs.puzzleslib.api.event.v1.AddBlockEntityTypeBlocksCallback;
 import fuzs.puzzleslib.api.event.v1.entity.ServerEntityLevelEvents;
 import fuzs.puzzleslib.api.event.v1.entity.living.CalculateLivingVisibilityCallback;
@@ -17,10 +16,10 @@ import fuzs.villagemasquerade.init.ModRegistry;
 import fuzs.villagemasquerade.util.VillagerTradingHelper;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.npc.VillagerProfession;
-import net.minecraft.world.entity.npc.VillagerTrades;
+import net.minecraft.world.entity.npc.villager.VillagerProfession;
+import net.minecraft.world.entity.npc.villager.VillagerTrades;
 import net.minecraft.world.item.Item;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -50,7 +49,7 @@ public class VillageMasquerade implements ModConstructor {
     @Override
     public void onRegisterVillagerTrades(VillagerTradesContext context) {
         BuiltInRegistries.ITEM.listElements()
-                .filter((Holder.Reference<Item> holder) -> holder.key().location().getNamespace().equals(MOD_ID))
+                .filter((Holder.Reference<Item> holder) -> holder.key().identifier().getNamespace().equals(MOD_ID))
                 .map(Holder.Reference::value)
                 .forEach((Item item) -> {
                     ResourceKey<VillagerProfession> resourceKey = item.components()
@@ -70,7 +69,7 @@ public class VillageMasquerade implements ModConstructor {
                 VillagerTradingHelper.createWanderingItemListing(ModItems.WANDERING_TRADER_LEGGINGS_ITEM));
     }
 
-    public static ResourceLocation id(String path) {
-        return ResourceLocationHelper.fromNamespaceAndPath(MOD_ID, path);
+    public static Identifier id(String path) {
+        return Identifier.fromNamespaceAndPath(MOD_ID, path);
     }
 }

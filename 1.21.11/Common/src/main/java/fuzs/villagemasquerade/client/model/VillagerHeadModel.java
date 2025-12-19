@@ -4,14 +4,14 @@ import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.CubeListBuilder;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 public class VillagerHeadModel {
-    public static final ResourceLocation VILLAGER_LOCATION = ResourceLocation.withDefaultNamespace(
+    public static final Identifier VILLAGER_LOCATION = Identifier.withDefaultNamespace(
             "textures/entity/villager/villager.png");
-    public static final ResourceLocation IRON_GOLEM_LOCATION = ResourceLocation.withDefaultNamespace(
+    public static final Identifier IRON_GOLEM_LOCATION = Identifier.withDefaultNamespace(
             "textures/entity/iron_golem/iron_golem.png");
-    public static final ResourceLocation PILLAGER_LOCATION = ResourceLocation.withDefaultNamespace(
+    public static final Identifier PILLAGER_LOCATION = Identifier.withDefaultNamespace(
             "textures/entity/illager/pillager.png");
 
     public static MeshDefinition createVillagerHeadModel() {

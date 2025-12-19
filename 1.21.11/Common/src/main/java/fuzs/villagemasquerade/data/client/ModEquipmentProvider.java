@@ -52,6 +52,6 @@ public class ModEquipmentProvider extends AbstractEquipmentProvider {
 
     public final void addClothingLayer(BiConsumer<ResourceKey<EquipmentAsset>, EquipmentClientInfo> equipmentAssetConsumer, ResourceKey<EquipmentAsset> resourceKey) {
         equipmentAssetConsumer.accept(resourceKey,
-                simple(ModModelLayers.CLOTHING_LAYER_TYPE, VillageMasquerade.id(resourceKey.location().getPath())));
+                simple(ModModelLayers.CLOTHING_LAYER_TYPE, VillageMasquerade.id(resourceKey.identifier().getPath())));
     }
 }

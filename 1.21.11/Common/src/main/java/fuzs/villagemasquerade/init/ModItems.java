@@ -3,14 +3,14 @@ package fuzs.villagemasquerade.init;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.npc.VillagerProfession;
+import net.minecraft.world.entity.npc.villager.VillagerProfession;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.StandingAndWallBlockItem;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
@@ -253,12 +253,12 @@ public class ModItems {
     private static ItemAttributeModifiers createIronGolemAttributes(ArmorType armorType) {
         ItemAttributeModifiers.Builder builder = ItemAttributeModifiers.builder();
         EquipmentSlotGroup equipmentSlotGroup = EquipmentSlotGroup.bySlot(armorType.getSlot());
-        ResourceLocation resourceLocation = ResourceLocation.withDefaultNamespace("clothing." + armorType.getName());
+        Identifier identifier = Identifier.withDefaultNamespace("clothing." + armorType.getName());
         builder.add(Attributes.ATTACK_DAMAGE,
-                new AttributeModifier(resourceLocation, 1.0, AttributeModifier.Operation.ADD_VALUE),
+                new AttributeModifier(identifier, 1.0, AttributeModifier.Operation.ADD_VALUE),
                 equipmentSlotGroup);
         builder.add(Attributes.KNOCKBACK_RESISTANCE,
-                new AttributeModifier(resourceLocation, 0.3, AttributeModifier.Operation.ADD_VALUE),
+                new AttributeModifier(identifier, 0.3, AttributeModifier.Operation.ADD_VALUE),
                 equipmentSlotGroup);
         return builder.build();
     }

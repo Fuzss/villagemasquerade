@@ -2,7 +2,7 @@ package fuzs.villagemasquerade.data.client;
 
 import fuzs.puzzleslib.api.client.data.v2.AbstractModelProvider;
 import fuzs.puzzleslib.api.client.data.v2.models.ModelLocationHelper;
-import fuzs.puzzleslib.api.core.v1.utility.ResourceLocationHelper;
+import net.minecraft.resources.Identifier;
 import fuzs.puzzleslib.api.data.v2.core.DataProviderContext;
 import fuzs.villagemasquerade.init.ModBlocks;
 import fuzs.villagemasquerade.init.ModItems;
@@ -38,7 +38,7 @@ public class ModModelProvider extends AbstractModelProvider {
 
     public final void createHead(Block headBlock, Block wallHeadBlock, SkullBlock.Type type, BlockModelGenerators blockModelGenerators) {
         MultiVariant multiVariant = BlockModelGenerators.plainVariant(ModelLocationHelper.getBlockModel(
-                ResourceLocationHelper.withDefaultNamespace("skull")));
+                Identifier.withDefaultNamespace("skull")));
         blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(headBlock, multiVariant));
         blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(wallHeadBlock,
                 multiVariant));
